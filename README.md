@@ -39,7 +39,7 @@ JavaScript・Java・PHPに対する規約
 
 　/*
 
-　　内容
+　内容
 
 　*/
 
