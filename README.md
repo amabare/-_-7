@@ -13,4 +13,5 @@ GitHubの[Setting]から[Collaborators]を選択し、[Add People]を押す
 　↓
 
 相手が承諾することで共有可能
+
 ---
