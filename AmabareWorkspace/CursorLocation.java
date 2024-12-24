@@ -1,3 +1,14 @@
+/* 
+ソースコード作成者: 山本
+修正日時: 2024/12/24
+ソースコードの動作や役割: マウスカーソルの位置情報を取得する
+コメント: 返り値として「return 0;」を設定することができていない
+　　　　  あと、
+　　　　  　・":"の後にスペースを入れることができていない
+　　　　  　・"()"の後に"{}"を書く際はスペースを入れられてない
+　　　　  入れることができないのかもしれない
+*/
+
 package AmabareWorkspace;
 
 // マウスカーソルの情報を取得するためのクラス
@@ -14,6 +25,7 @@ import javax.swing.Timer;
 public class CursorLocation extends JFrame {
     private JLabel label;
 
+    // コンストラクタ
     public CursorLocation() {
         label = new JLabel("カーソルの位置: ");
         // labelの文字列をフレームに追加
@@ -26,12 +38,13 @@ public class CursorLocation extends JFrame {
         setVisible(true);
 
         // 100ミリ秒ごとにカーソルの位置を更新
-        Timer timer = new Timer(100, _ -> updateCursorLocation());
+        Timer timer = new Timer(100, _ -> UpdateCursorLocation());
         // タイマーを開始
         timer.start();
     }
 
-    private void updateCursorLocation() {
+    // メソッド
+    private void UpdateCursorLocation() {
         // マウスカーソルの現在位置を取得
         Point point = MouseInfo.getPointerInfo().getLocation();
         label.setText("カーソルの位置: X=" + point.x + " Y=" + point.y);
