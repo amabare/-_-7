@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日付表示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="date-output">日付を表示します...</div>
+
+    <script>
+        // int型の変数を用意
+        const year = 2024;
+        const month = 12;
+        const day = 26;
+        const hour = 20;
+        const minute = 45;
+
+        // フォーマットに従って日付を生成
+        const formattedDate = `${year}年${month}月${day}日${hour}時${minute}分`;
+
+        // HTMLに出力
+        document.getElementById("date-output").textContent = formattedDate;
+    </script>
+</body>
+</html>

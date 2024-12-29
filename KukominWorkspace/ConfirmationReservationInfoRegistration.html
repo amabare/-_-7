@@ -1,0 +1,83 @@
+<!-- HTMLファイル -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約登録確認画面</title>
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+
+
+    <!-- メインコンテンツエリア -->
+    <main>
+        <!-- ウェルカムメッセージ付きカード -->
+        <!-- <div class="card">
+            <h2>Welcome, User!</h2>
+            <p>This is your web system dashboard. Use the navigation bar to explore features.</p>
+        </div> -->
+
+        <!-- 情報入力フォーム -->
+        <div class="form-container">
+            <div id="reservation-id">予約IDを表示</div>
+            <div id="reserver">予約者名</div>
+            <div id="date-output">日付を表示</div>
+            <div id="reserver_num">予約人数</div>
+            <script>
+                // int型の変数を用意
+                const year = 2024;
+                const month = 12;
+                const day = 26;
+                const hour = 20;
+                const minute = 45;
+                const number = 2;
+                // char型の変数（JavaScriptでは文字列型）
+                const reservationID = 'A123';
+                const reserver      = '高知 花子'
+                // フォーマット
+                const formattedDate = `${year}年${month}月${day}日${hour}時${minute}分`;
+                const formattedID = `予約ID:${reservationID}`;
+                const formattedNumber = `予約者数:${number}`;
+                const formattedName = `予約者名:${reserver}`;
+                // HTMLに出力
+                document.getElementById("reservation-id").textContent = formattedID;
+                document.getElementById("reserver").textContent = formattedName;
+                document.getElementById("date-output").textContent = formattedDate;
+                document.getElementById("reserver_num").textContent = formattedNumber;
+            </script>
+            <form>                
+                <h2>上記の内容でよろしいですか?</h2>
+                <!-- ボタン群 -->
+                <div class="button-group">
+                    <button type="submit">はい</button>
+                    <button type="button">いいえ</butto>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- フッターセクション -->
+    <footer>
+        &copy; 2024 Web System. All rights reserved.
+    </footer>
+</body>
+</html>
+
+
+<!-- <label for="RID">予約ID:</label>
+<input type="text" id="RID" name="RID">
+<label for="R_name">予約者名:</label>
+<input type="text" id="R_name" name="R_name"> -->
+<!-- <label for="R_date">予約日時:</label>
+<input type="text" id="R_date" name="R_date">
+<label for="R_num">予約人数:</label>
+<input type="text" id="R_num" name="R_num"> -->

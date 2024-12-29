@@ -1,0 +1,63 @@
+<!-- HTMLファイル -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約情報変更画面</title>
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ヘッダーセクション -->
+    <!-- <header>
+        <h1>Web System Dashboard</h1>
+    </header> -->
+
+    <!-- ナビゲーションバー -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+
+    <!-- メインコンテンツエリア -->
+    <main>
+        <!-- ウェルカムメッセージ付きカード -->
+        <!-- <div class="card">
+            <h2>Welcome, User!</h2>
+            <p>This is your web system dashboard. Use the navigation bar to explore features.</p>
+        </div> -->
+
+        <!-- 情報入力フォーム -->
+        <div class="form-container">
+            <h2>予約情報の変更</h2>
+            <form>
+                <label for="RID">予約ID:</label>
+                <input type="text" id="RID" name="RID" placeholder="12345678">
+                <label for="R_name">予約者名:</label>
+                <input type="text" id="R_name" name="R_name" placeholder="高知 花子">
+                <label for="R_name">予約日時:</label>
+                <input type="text" id="R_name" name="R_name" placeholder="">
+                <label for="R_num">予約人数:</label>
+                <input type="text" id="R_num" name="R_num" placeholder="">
+                <!-- <label for="role">Role:</label>
+                <select id="role" name="role">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                    <option value="guest">Guest</option>
+                </select> -->
+                <div class="button-group">
+                    <button type="submit">次へ</button>
+                    <button type="button">戻る</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- フッターセクション -->
+    <footer>
+        &copy; 2024 Web System. All rights reserved.
+    </footer>
+</body>
+</html>
