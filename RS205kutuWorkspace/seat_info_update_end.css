@@ -1,0 +1,13 @@
+/* 席情報変更完了画面 作成者:佐々木 修正日時:12/31 */
+
+#center, h1{
+    text-align: center;
+}
+
+#bluebutton{
+    background-color: #29a5e2; /* 背景色の変更 */
+    padding: 5px 100px; /*枠内の幅を設定 */
+    border-radius: 5px; /* 角を丸くする */
+    border-width: 0px; /* 枠線を消去 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}

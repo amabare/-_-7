@@ -1,0 +1,23 @@
+/* 予約情報登録画面のCSS 作成者:佐々木 修正日時:12/31 */
+
+#submit{
+    display: block; /* インライン要素からブロック要素に変換 */
+    margin: 0 auto; /* ブロック要素に対し中央寄せ */
+    background-color: #29a5e2; /* 背景色の変更 */
+    padding: 5px 100px; /*枠内の幅を設定 */
+    border-radius: 5px; /* 角を丸くする */
+    border-width: 0px; /* 枠線を消去 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+#submit:hover{
+    background-color: #a7a7a7;
+}
+
+#blue_button{
+    background-color: #29a5e2; /* 背景色の変更 */
+    padding: 5px 100px; /*枠内の幅を設定 */
+    border-radius: 5px; /* 角を丸くする */
+    border-width: 0px; /* 枠線を消去 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}

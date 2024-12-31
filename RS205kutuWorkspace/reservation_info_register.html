@@ -1,0 +1,58 @@
+<!-- 予約情報登録画面 作成者:佐々木 修正日時:12/31 -->
+<!-- 
+予約者名、予約日時、予約人数を受け取るとその情報がDBに登録され、予約情報登録完了画面に遷移する
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 予約情報登録画面 </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "reservation_info_register.css">
+    </head>
+    <body>
+        <div id="headhoot"> </div>
+        <script>
+            fetch('kukomin/store_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <h2> 予約情報の登録 </h2>
+        <form id = "register_form" action = "#" method = "get">
+            <!-- 予約情報を登録するフォーム(11行3列) -->
+            <table>
+                <tr>
+                    <td> 予約者名 </td>
+                    <td colspan = "10"> <input type = "text" name = "reserve_name"/> </td>
+                </tr>
+                <tr>
+                    <td> 予約日時 </td>
+                    <td> <input type = "text" name = "reserve_year" size = "4"/> </td>
+                    <td> 年 </td>
+                    <td> <input type = "text" name = "reserve_month" size = "2"/> </td>
+                    <td> 月 </td>
+                    <td> <input type = "text" name = "reserve_day" size = "2"/> </td>
+                    <td> 日 </td>
+                    <td> <input type = "text" name = "reserve_hour" size = "2"/> </td>
+                    <td> 時 </td>
+                    <td> <input type = "text" name = "reserve_minute" size = "2"/> </td>
+                    <td> 分 </td>
+                </tr>
+                <tr>
+                    <td> 予約人数 </td>
+                    <td> <input type = "text" name = "reserve_number_people" size = "4"/> </td>
+                    <td colspan = "9"> 人 </td>
+                </tr>
+            </table>
+            <table align = "center" cellspace = "100">
+                <tr>
+                    <!-- 予約情報登録確認画面、予約管理画面のURLを貼る予定 -->
+                    <td> <input type = "submit" id = "submit" value = "登録" onclick = "location.href = '#'"/> </td>
+                    <td>     </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
