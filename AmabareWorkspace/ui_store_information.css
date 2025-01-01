@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #29a5e2; /* 背景色を緑に設定 */
+    color: white; /* テキスト色を白に設定 */
+    padding: 15px 20px; /* ヘッダー内部の余白を設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+}
+
+/* ナビゲーションバーのスタイル */
+nav {
+    background-color: #29a5e2; /* 背景色を濃いグレーに設定 */
+    overflow: hidden; /* コンテンツのオーバーフローを防止 */
+    display: flex; /* フレックスボックスを使用 */
+    justify-content: center; /* コンテンツを中央揃えに設定 */
+    gap: 50px; /* リンク間にスペースを追加 */
+    padding: 20px; /* ナビゲーションバーの内部余白を設定 */
+}
+
+nav a {
+    display: block; /* リンクをブロックレベル要素として設定 */
+    color: black; /* テキスト色を白に設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+    padding: 14px 16px; /* リンク内部の余白を設定 */
+    text-decoration: none; /* 下線を削除 */
+    background-color: white; /* 背景色を緑に設定 */
+    border-radius: 4px; /* 角を丸くする */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+nav a:hover {
+    background-color: #575757; /* ホバー時の背景色を濃い緑に変更 */
+}
+
+.results-container {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h2 {
+    text-align: center;
+}
+
+.store-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.store-item h3 {
+    margin: 0;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.button {
+    background-color: #007bff; /* ボタンの背景色を変更 */
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* ボタンの文字サイズを大きく設定 */
+    font-weight: bold; /* ボタンの文字を太く設定 */
+    color: white;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,77 @@
+/* styles.css */
+
+/* ページ全体の基本スタイル */
+body {
+    /* デフォルトフォントをArialに設定 */
+    font-family: Arial, sans-serif;
+    /* デフォルトのマージンを削除 */
+    margin: 0; 
+    /* デフォルトのパディングを削除 */
+    padding: 0;
+    /* 背景色を淡いグレーに設定 */
+    background-color: #f4f4f0;
+}
+
+/* メインコンテンツエリアのスタイル */
+main {
+    /* メインコンテンツの余白を設定 */
+    padding: 20px; 
+}
+
+/* フォームコンテナのスタイル */
+.form-container {
+    /* 最大幅を設定 */
+    max-width: 500px;
+    /* フォームを中央揃えに設定 */ 
+    margin: 0 auto;
+    /* フォーム内部の余白を設定 */ 
+    padding: 20px; 
+    /* 背景色を白に設定 */
+    background: #fff; 
+    /* 角を丸くする */
+    border-radius: 8px; 
+    /* 軽い影を設定 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* 通常時のボタンのスタイル */
+.form-container input, .form-container select, .form-container button {
+    /* 幅を100%に設定 */
+    width: 100%; 
+    /* 内部余白を設定 */
+    padding: 10px; 
+    /* 下に余白を設定 */
+    margin-bottom: 15px; 
+    /* 薄い枠線を設定 */
+    border: 1px solid #ccc;
+    /* 角を丸くする */ 
+    border-radius: 4px; 
+}
+
+/* カーソルを合わせたときのスタイル */
+.form-container input:hover, .form-container select:hover, .form-container button:hover {
+    /* 背景色を変更 */
+    background-color: #29a4e2a8; 
+}
+
+/* ボタンの配置 */
+.form-container .button-group {
+    /* ボタンを横並びに配置 */
+    display: flex; 
+    /* ボタン間にスペースを追加 */
+    justify-content: space-between; 
+    /* ボタンの間隔 */
+    gap: 10px;
+}
+
+/* ボタンの背景やテキスト色の設定 */
+.form-container button {
+    /* 背景色を設定 */
+    background-color: #29a5e2;
+    /* テキスト色を白に設定 */ 
+    color: white;
+    /* 枠線を削除 */ 
+    border: none; 
+    /* ホバー時のカーソルを変更 */
+    cursor: pointer; 
+}

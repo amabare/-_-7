@@ -1,0 +1,74 @@
+/* styles.css */
+
+/* ページ全体の基本スタイル */
+body {
+    font-family: Arial, sans-serif; /* デフォルトフォントをArialに設定 */
+    margin: 0; /* デフォルトのマージンを削除 */
+    padding: 0; /* デフォルトのパディングを削除 */
+    background-color: #f4f4f9; /* 背景色を淡いグレーに設定 */
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #29a5e2; /* 背景色を緑に設定 */
+    color: white; /* テキスト色を白に設定 */
+    padding: 15px 20px; /* ヘッダー内部の余白を設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+}
+
+/* ナビゲーションバーのスタイル */
+nav {
+    background-color: #29a5e2; /* 背景色を濃いグレーに設定 */
+    overflow: hidden; /* コンテンツのオーバーフローを防止 */
+    display: flex; /* フレックスボックスを使用 */
+    justify-content: center; /* コンテンツを中央揃えに設定 */
+    gap: 50px; /* リンク間にスペースを追加 */
+    padding: 20px; /* ナビゲーションバーの内部余白を設定 */
+}
+
+nav a {
+    display: block; /* リンクをブロックレベル要素として設定 */
+    color: black; /* テキスト色を白に設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+    padding: 14px 16px; /* リンク内部の余白を設定 */
+    text-decoration: none; /* 下線を削除 */
+    background-color: white; /* 背景色を緑に設定 */
+    border-radius: 4px; /* 角を丸くする */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+nav a:hover {
+    background-color: #575757; /* ホバー時の背景色を濃い緑に変更 */
+}
+
+/* フォームコンテナのスタイル */
+.form-container {
+    max-width: 500px; /* 最大幅を設定 */
+    padding: 20px; /* フォーム内部の余白を設定 */
+}
+
+.form-container h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center; /* ボタンを中央揃えに設定 */
+    gap: 10px; /* ボタン間のスペースを設定 */
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #007bff; /* ボタンの背景色を変更 */
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* ボタンの文字サイズを大きく設定 */
+    font-weight: bold; /* ボタンの文字を太く設定 */
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
