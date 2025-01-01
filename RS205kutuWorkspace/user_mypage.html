@@ -1,0 +1,48 @@
+<!-- マイページ 作成者:佐々木 修正日時12/24 -->
+<!-- 
+会員情報確認・会員情報変更・パスワード変更・退会画面への遷移のあるボタン、登録名に加え、
+一般ユーザには予約一覧とその予約に対する予約削除確認画面への遷移のあるボタンを表示する  
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 一般ユーザマイページ </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "user_mypage.css">
+    </head>
+    <body>
+        <!-- user_header.htmlを挿入 -->
+        <div id="headhoot"> </div>
+        <script>
+            fetch('kukomin/user_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <!--<h2 style = "display: inline"> nullo </h2> これは改行しないテンプレートです -->
+        <h2> マイページ </h2>
+        <h2> 予約一覧 </h2>
+        <!-- マイページのボタン -->
+        <div class = "line_up">
+        <table cellspacing = "30">
+            <tr>
+                <td> <a href="#" id = "button"> 会員情報確認 </a> </td>
+            </tr>
+            <tr>
+                <td> <a href="#" id = "button"> 会員情報変更 </a> </td>
+            </tr>
+            <tr>
+                <td> <a href="#" id = "button"> パスワード変更 </a> </td>
+            </tr>
+            <tr>
+                <td> <a href="user_cancel_account_check.html" id = "button"> 退会 </a> </td>
+            </tr>
+        </table>
+        <iframe src = "null.html"> </iframe>
+    </div>
+    <br>
+        <center> <a id = "submit" href = "user_rogin_toppage.html"> トップページへ戻る </a> </center>
+    </body>
+</html>

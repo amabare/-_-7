@@ -1,0 +1,27 @@
+/* 一般ユーザ退会確認画面のCSS 作成者:佐々木 修正日時:1/1 */
+
+/* iframeのスタイル */
+iframe {
+    width: 600px; /* 幅を指定 */
+    height: 400px; /* 高さを指定 */
+}
+
+.line_up{
+    display: flex;
+    align-items: flex-start; /* 上部に揃える */
+    gap: 30px; /* テーブルとiframeの間にスペースを空ける */
+    margin-top: 20px;
+}
+
+#submit{
+    margin: 0 auto; /* ブロック要素に対し中央寄せ */
+    background-color: #29a5e2; /* 背景色の変更 */
+    padding: 5px 100px; /*枠内の幅を設定 */
+    border-radius: 5px; /* 角を丸くする */
+    border-width: 0px; /* 枠線を消去 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+#submit:hover{
+    background-color: #a7a7a7;
+}

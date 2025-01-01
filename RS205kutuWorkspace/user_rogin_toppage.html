@@ -1,0 +1,25 @@
+<!-- 一般ユーザログイン時トップページ 作成者:佐々木 修正日時1/1 -->
+<!-- 
+空席のある飲食店をそのユーザの予約履歴・ランダムを使用して表示する
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 一般ユーザログイン時トップページ </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "">
+    </head>
+    <body>
+        <div id="headhoot"> </div>
+        <script>
+            fetch('kukomin/user_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <h2> 空席のある飲食店 </h2>
+        
+    </body>
+</html>

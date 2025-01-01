@@ -1,0 +1,22 @@
+<!-- 事業者ログイン時トップページ 作成者:佐々木 修正日時1/1 -->
+<!-- 
+ヘッダとフッタのみ表示する
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 事業者ログイン時トップページ </title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="headhoot"> </div>
+        <script>
+            fetch('kukomin/store_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+    </body>
+</html>
