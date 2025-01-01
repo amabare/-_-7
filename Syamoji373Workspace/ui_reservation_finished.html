@@ -1,7 +1,7 @@
 <!-- 
 作成者：シモジ
 更新日時：2025年1月2日4時23分
-動作・役割：認証コードを入力、再送信ができる。次へ・戻るで前後の画面へ遷移
+動作・役割：予約完了画面
 コメント： ボタンをリンク付けしなければいけない気がする
 -->
 
@@ -13,19 +13,22 @@
   <!-- 表示の仕方 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- タイトル -->
-  <title>認証コード入力</title>
+  <title>予約完了</title>
   <!-- 外部CSSファイルをリンク -->
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <!-- ナビゲーションバー（ヘッダー） -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+    
   <div class="main">
-    <h1>認証コードを入力してください</h1>
+    <h1>予約が完了しました</h1>
     <form>
-      <input type="text" name="auth_code" placeholder="認証コード">
-      <button type="submit">再送信</button>
-      <button type="button">戻る</button>
-      <button type="submit">次へ</button>
+        <button type="button">戻る</button>
     </form>
   </div>
 </body>

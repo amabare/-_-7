@@ -1,0 +1,63 @@
+<!-- 
+作成者：シモジ
+更新日時：2025年1月2日5時36分
+動作・役割：星評価入力画面
+コメント： 現状だと星の評価が５段階しかない
+-->
+
+<!DOCTYPE html>
+<!-- 日本語頁である事を宣言 -->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- 表示の仕方 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- タイトル -->
+  <title>星評価</title>
+  <!-- 外部CSSファイルをリンク -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ナビゲーションバー（ヘッダー） -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+    <!--星で評価  -->
+    <div class="star-rating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      
+      <script>
+      const stars = document.querySelectorAll('.star');
+      
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const value = parseInt(star.dataset.value);
+      
+          stars.forEach(s => {
+            if (parseInt(s.dataset.value) <= value) {
+              s.classList.add('active');
+            } else {
+              s.classList.remove('active');
+            }
+          });
+        });
+      });
+      </script>
+
+    <div class="header"></div>
+    <div class="main">
+        <form>
+            <button type="submit">戻る</button>
+            <button type="button">確定</button>
+        </form>
+    </div>
+</body>
+</html>

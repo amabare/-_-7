@@ -1,7 +1,7 @@
 <!-- 
 作成者：シモジ
-更新日時：2025年1月2日4時23分
-動作・役割：認証コードを入力、再送信ができる。次へ・戻るで前後の画面へ遷移
+更新日時：2025年1月2日4時26分
+動作・役割：ログアウトをしても良いか確認する画面
 コメント： ボタンをリンク付けしなければいけない気がする
 -->
 
@@ -13,19 +13,17 @@
   <!-- 表示の仕方 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- タイトル -->
-  <title>認証コード入力</title>
+  <title>ログアウト確認</title>
   <!-- 外部CSSファイルをリンク -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="main">
-    <h1>認証コードを入力してください</h1>
+    <h1>本当にログアウトしてもよろしいですか？</h1>
     <form>
-      <input type="text" name="auth_code" placeholder="認証コード">
-      <button type="submit">再送信</button>
-      <button type="button">戻る</button>
-      <button type="submit">次へ</button>
+        <button type="submit">はい</button>
+        <button type="button">いいえ</button>
     </form>
   </div>
 </body>
