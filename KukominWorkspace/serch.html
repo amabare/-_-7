@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗検索</title>
+</head>
+<body>
+    <h1>店舗検索システム</h1>
+    <!-- 店舗検索フォーム -->
+    <form action="/search" method="GET"> <!-- サーバーの"/search"エンドポイントにGETリクエストを送信 -->
+        <label for="location">地域:</label>
+        <!-- 地域を入力するテキストフィールド -->
+        <input type="text" id="location" name="location" placeholder="例: 東京">
+
+        <label for="cuisine">料理の種類:</label>
+        <!-- 料理の種類を入力するテキストフィールド -->
+        <input type="text" id="cuisine" name="cuisine" placeholder="例: 和食">
+
+        <!-- 検索ボタン -->
+        <button type="submit">検索</button>
+    </form>
+
+    <h2>検索結果</h2>
+    <!-- 検索結果を表示するエリア -->
+    <div id="results">
+        <!-- サーバー側で動的に生成された検索結果がここに挿入される -->
+    </div>
+</body>
+</html>
