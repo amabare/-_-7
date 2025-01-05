@@ -1,0 +1,43 @@
+<!-- HTMLファイル -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事業者席情報削除画面</title>
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ヘッダーセクション -->
+    <!-- <header>
+        <h1>Web System Dashboard</h1>
+    </header> -->
+
+    <!-- ナビゲーションバー -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+
+    <!-- メインコンテンツエリア -->
+    <main>
+        <div style="padding-top: 150px">
+            <p align="center">この席情報を削除します。</p>
+            <p align="center">本当に削除しますか？</p>
+        </div>
+
+        <!-- 戻るボタンや登録ボタンを表示 -->
+        <div class="form-buttons" style="padding-top: 50px" align="center">
+            <button class="button" type="button" onclick="history.back()">削除しない</button>
+            <button class="fixed-submit-button" type="submit" form="register-form">削除する</button>
+        </div>
+    </main>
+
+    <!-- フッターセクション -->
+    <footer>
+        &copy; 2024 Web System. All rights reserved.
+    </footer>
+</body>
+</html>

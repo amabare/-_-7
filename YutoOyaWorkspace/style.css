@@ -120,3 +120,15 @@ footer {
     bottom: 0; /* 下端に配置 */
     width: 100%; /* 幅を100%に設定 */
 }
+
+.form-buttons button[type="button"] {
+  background-color: #29a5e2; /* 戻るボタンの背景色を変更 */
+}
+
+.form-buttons button:hover {
+  background-color: #29a4e2a8;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #29a4e2a8;
+}
