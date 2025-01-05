@@ -1,3 +1,10 @@
+/* 
+    作成者: 山本
+    修正日時: 2025/01/05 13:19
+    動作や役割: 新規ユーザー登録画面のスタイルを定義するCSSファイル
+    コメント: なし
+*/
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -23,7 +30,7 @@ body {
     border: none;
     padding: 10px; /* 内側の余白を追加 */
     border-radius: 4px; /* 角を丸くする */
-    background-color: #007bff; /* 背景色を追加して塗りつぶす */
+    background-color: #29a5e2; /* 背景色を追加して塗りつぶす */
     display: inline-block; /* 枠の大きさを文字の幅に合わせる */
 }
 
@@ -60,22 +67,22 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #29a5e2;
     cursor: pointer;
     font-size: 16px; /* ボタンの文字サイズを大きく設定 */
     font-weight: bold; /* ボタンの文字を太く設定 */
 }
 
 .form-buttons button[type="button"] {
-    background-color: #007bff; /* 戻るボタンの背景色を変更 */
+    background-color: #29a5e2; /* 戻るボタンの背景色を変更 */
 }
 
 .form-buttons button:hover {
-    background-color: #0056b3;
+    background-color: #29a4e2a8;
 }
 
 .form-buttons button[type="button"]:hover {
-    background-color: #0056b3;
+    background-color: #29a4e2a8;
 }
 
 .terms-link {
@@ -87,7 +94,7 @@ body {
 }
 
 .terms-link a {
-    color: #007bff;
+    color: #29a5e2;
     text-decoration: none;
 }
 
@@ -104,7 +111,7 @@ body {
 }
 
 .fixed-submit-button:hover {
-    background-color: #0056b3;
+    background-color: #29a5e2;
 }
 
 /* モーダルウィンドウのスタイル */

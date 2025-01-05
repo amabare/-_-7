@@ -1,4 +1,9 @@
-/* styles.css */
+/* 
+    作成者: 山本
+    修正日時: 2025/01/05 13:19
+    動作や役割: 口コミ投稿完了画面のスタイルを定義するCSSファイル
+    コメント: なし
+*/
 
 /* ページ全体の基本スタイル */
 body {
@@ -60,7 +65,7 @@ nav a:hover {
 }
 
 .button {
-    background-color: #007bff; /* ボタンの背景色を変更 */
+    background-color: #29a5e2; /* ボタンの背景色を変更 */
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -70,5 +75,5 @@ nav a:hover {
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #29a4e2a8;
 }

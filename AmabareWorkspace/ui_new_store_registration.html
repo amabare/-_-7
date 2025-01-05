@@ -1,8 +1,8 @@
 <!--
 作成者: 山本
-修正日時: 2025/01/05 12:54
+修正日時: 2025/01/05 13:14
 動作や役割: 事業者が会員登録を行う画面
-コメント: 修正点は「表示言語を日本語にした」と「コードの作成情報の記述」
+コメント: 年齢入力フォームに関する関数を削除
 -->
 
 <!DOCTYPE html>
@@ -11,22 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事業者会員登録画面</title>
-    <link rel="stylesheet" href="ui_new_user_registration.css">
+    <link rel="stylesheet" href="ui_new_store_registration.css">
     <script>
-        // 年齢の選択肢を自動生成する関数
-        function populateAgeOptions() {
-            const ageSelect = document.getElementById('age');
-            for (let i = 0; i <= 100; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = i;
-                ageSelect.appendChild(option);
-            }
-        }
-
-        // ページが読み込まれたときに年齢の選択肢を生成
-        window.onload = populateAgeOptions;
-
         // モーダルを開く関数
         function openModal() {
             document.getElementById('termsModal').style.display = 'block';
