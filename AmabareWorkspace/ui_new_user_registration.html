@@ -1,0 +1,175 @@
+<!--
+作成者: 山本
+修正日時: 2025/01/05 12:55
+動作や役割: 一般ユーザが会員登録を行う画面
+コメント: 修正点は「表示言語を日本語にした」と「コードの作成情報の記述」
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一般ユーザ会員登録画面</title>
+    <link rel="stylesheet" href="ui_new_user_registration.css">
+    <script>
+        // 年齢の選択肢を自動生成する関数
+        function populateAgeOptions() {
+            const ageSelect = document.getElementById('age');
+            for (let i = 0; i <= 100; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                ageSelect.appendChild(option);
+            }
+        }
+
+        // ページが読み込まれたときに年齢の選択肢を生成
+        window.onload = populateAgeOptions;
+
+        // モーダルを開く関数
+        function openModal() {
+            document.getElementById('termsModal').style.display = 'block';
+        }
+
+        // モーダルを閉じる関数
+        function closeModal() {
+            document.getElementById('termsModal').style.display = 'none';
+        }
+
+        // 支払方法の変更を監視する関数
+        function toggleCreditCardInfo() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const creditCardInfo = document.getElementById('credit-card-info');
+            if (paymentMethod === 'credit-card') {
+                creditCardInfo.style.display = 'block';
+            } else {
+                creditCardInfo.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>情報を入力してください</h2>
+        <form action="/register" method="post">
+            <!-- グループ化するためのdiv -->
+            <div class="form-group">
+                <!-- ユーザ名入力 -->
+                <div class="form-item">
+                    <label for="username">ユーザー名</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <!-- 性別入力 -->
+                <div class="form-item">
+                    <label for="gender">性別</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">選択してください</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                        <option value="other">未選択</option>
+                    </select>
+                </div>
+                <!-- 年齢入力 -->
+                <div class="form-item">
+                    <label for="gender">年齢</label>
+                    <select id="age" name="age" required>
+                        <option value="">選択してください</option>
+                        <!-- 年齢の選択肢はJavaScriptで動的に追加 -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- 住所入力 -->
+            <div class="form-item">
+                <label for="address">住所</label>
+                <input type="address" id="address" name="address" required>
+            </div>
+            
+            <!-- メールアドレス入力 -->
+            <div class="form-item">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- パスワード入力 -->
+            <div class="form-item">
+                <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" required>
+            </div>
+
+            <!-- 電話番号入力 -->
+            <div class="form-group">
+                <div class="form-item">
+                    <label for="confirm-password">電話番号</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <!-- 料金支払方法入力 -->
+                <div class="form-item">
+                    <label for="payment-method">料金支払方法</label>
+                    <select id="payment-method" name="payment-method" required onchange="toggleCreditCardInfo()">
+                        <option value="">選択してください</option>
+                        <option value="convenience store">コンビニ</option>
+                        <option value="credit-card">クレジット</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- クレジット支払を選択したときに、クレジットカードの情報を入力 -->
+            <div id="credit-card-info" style="display: none;">
+                <div class="form-item">
+                    <label for="card-number">番号</label>
+                    <input type="text" id="card-number" name="card-number">
+                </div>
+                <div class="form-item">
+                    <label for="card-name">名義</label>
+                    <input type="text" id="card-name" name="card-name">
+                </div>
+                <div class="form-item">
+                    <label for="card-expiry">期限</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                </div>
+                <div class="form-item">
+                    <label for="card-code">セキュリティコード</label>
+                    <input type="text" id="card-code" name="card-code">
+                </div>
+            </div>
+            
+            <!-- 戻るボタンや登録ボタンを表示 -->
+            <div class="form-buttons">
+                <button class="button" type="button" onclick="history.back()">戻る</button>
+                <button class="fixed-submit-button" type="submit" form="register-form">登録</button>
+            </div>
+        </form>
+
+        <!-- 利用規約はこちら」の文章を -->
+        <div class="terms-link">
+            <label for="agree-terms"><a href="javascript:void(0);" onclick="openModal()">利用規約</a>に同意する場合、チェックをしてください</label>
+            <input type="checkbox" id="agree-terms" name="agree-terms" required>
+        </div>
+    </div>
+
+    <!-- モーダルウィンドウ -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>利用規約</h2>
+            
+            <h3>第1条</h3>
+            <p>...</p>
+            
+            <h3>第2条</h3>
+            <p>...</p>
+            
+            <h3>第3条</h3>
+            <p>...</p>
+            
+            <h3>第4条</h3>
+            <p>...</p>
+
+            <h3>第5条</h3>
+            <p>...</p>
+        </div>
+    </div>
+</body>
+</html>

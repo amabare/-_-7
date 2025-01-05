@@ -1,0 +1,64 @@
+<!--
+作成者: 山本
+修正日時: 2025/01/05 12:58
+動作や役割: 店舗の検索結果を表示する画面
+コメント: 修正点は「表示言語を日本語にした」と「コードの作成情報の記述」
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗検索結果</title>
+    <link rel="stylesheet" href="ui_store_list.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">検索　🔍</a>
+            <a href="/about">マイページ</a>
+            <a href="/contact">ログアウト</a>
+        </nav>
+    </header>
+
+    <div class="results-container">
+        <h2>検索結果</h2>
+        <div id="store-list">
+            <!-- ここに検索結果の店舗情報が表示されます -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
+    </div>
+
+    <script>
+        // 検索結果の店舗情報を表示する関数
+        function displayStoreInformation(stores) {
+            const storeList = document.getElementById('store-list');
+            storeList.innerHTML = ''; // 既存の内容をクリア
+
+            stores.forEach(store => {
+                const storeDiv = document.createElement('div');
+                storeDiv.className = 'store-item';
+                storeDiv.innerHTML = `
+                    <h3>${store.name}</h3>
+                    <p>住所: ${store.address}</p>
+                    <p>営業時間: ${store.hours}</p>
+                    <p>タグ: ${store.tag}</p>
+                `;
+                storeList.appendChild(storeDiv);
+            });
+        }
+
+        // サーバーから店舗情報を取得して表示する
+        window.onload = function() {
+            fetch('/getStoreInformation')
+                .then(response => response.json())
+                .then(data => displayStoreInformation(data))
+                .catch(error => console.error('Error:', error));
+        };
+    </script>
+</body>
+</html>
