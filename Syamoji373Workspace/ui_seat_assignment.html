@@ -25,8 +25,49 @@
         <a href="#">ログアウト</a>
     </nav>
 
-    <div class="header"></div>
-    <div class="main"></div>
-    <div class="footer"></div>
+    <div class="header">
+      <h1>席の割り振り</h1>
+    </div>
+
+    <div class="assingnment">
+      <div class="item">
+          <div class="item-header">
+              <div>氏名 〇名</div>
+              <div>2025年1月30日15時00分</div>
+              </div>
+              <div class="options">
+                <label><input type="radio" name="kamiko" value="not_assigned"> 割り振らない</label>
+                <label><input type="radio" name="kamiko" value="assigned"> 割り振る</label>
+                <select>
+                    <option value="">座席を選択してください</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                </select>
+          </div>
+          
+      </div>
+
+      <div class="item">
+          <div class="item-header">
+              <div>氏名 〇名</div>
+              <div>2025年2月3日12時30分</div>
+          </div>
+          <div class="options">
+            <label><input type="radio" name="sakamoto" value="not_assigned"> 割り振らない</label>
+            <label><input type="radio" name="sakamoto" value="assigned"> 割り振る</label>
+            <select>
+                <option value="">座席を選択してください</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+            </select>
+        </div>
+      </div>
+
+    <div class="main">
+      <form>
+        <button type="button">戻る</button>
+        <button type="submit">登録する</button>
+    </form>
+    </div>
 </body>
 </html>

@@ -109,3 +109,33 @@ nav a:hover {
     /* 選択済みの星の色 */
     color: gold; 
   }
+/* 席割り振り画面 */
+ .assingnment{
+  width: 80%; /* 幅を調整 */
+  margin: 20px auto; /* 中央寄せ */
+  border: 2px solid #ccc; /* 枠線 */
+
+ }
+
+ .item {
+            border: 1px solid #ccc; /* 枠線 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .item-header {
+            display: flex;
+            /* 左右に配置 */
+            justify-content: space-between; 
+            /* 中央揃え */
+            align-items: center; 
+            margin-bottom: 5px;
+            /* セルに枠線を設定 */
+            border: 1px solid #ccc; 
+        }
+        .options {
+            display: flex;
+            align-items: center;
+        }
+        .options label {
+            margin-right: 10px;
+        }
