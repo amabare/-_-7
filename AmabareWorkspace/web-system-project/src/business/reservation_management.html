@@ -1,0 +1,136 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:04
+ソースコードの動作や役割: 予約管理画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約管理</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // 予約情報をローカルストレージから読み込んで表示する
+        function loadReservations() {
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            const reservationList = document.getElementById('reservation-list');
+            reservationList.innerHTML = '';
+            reservations.forEach((reservation, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `予約者: ${reservation.name}, 日時: ${reservation.date}, 座席: ${reservation.seat}, 人数: ${reservation.people}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '削除';
+                deleteButton.onclick = () => deleteReservation(index);
+                const arriveButton = document.createElement('button');
+                arriveButton.textContent = reservation.arrived ? '使用中' : '来店';
+                arriveButton.disabled = reservation.arrived;
+                arriveButton.onclick = () => markAsArrived(index);
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(arriveButton);
+                reservationList.appendChild(listItem);
+            });
+        }
+
+        // 予約情報を削除する
+        function deleteReservation(index) {
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            reservations.splice(index, 1);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+            loadReservations();
+        }
+
+        // 予約情報を「来店」にする
+        function markAsArrived(index) {
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            reservations[index].arrived = true;
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+            loadReservations();
+        }
+
+        // 予約情報を追加する
+        function addReservation() {
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const seat = document.getElementById('seat').value;
+            const people = parseInt(document.getElementById('people').value);
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+            const seatInfo = seats.find(s => s.number === seat);
+            const today = new Date(date).toISOString().split('T')[0];
+            const seatReservations = reservations.filter(r => r.seat === seat && r.date.split('T')[0] === today);
+            const usedSeats = seatReservations.reduce((total, r) => total + parseInt(r.people), 0);
+
+            if (seatInfo && (usedSeats + people) > seatInfo.count) {
+                alert('この座席の今日の残り座席数を超える人数が設定されています。');
+                return;
+            }
+
+            reservations.push({ name, date, seat, people, arrived: false });
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+            loadReservations();
+            document.getElementById('reservation-form').reset();
+        }
+
+        // 座席情報をローカルストレージから読み込んで表示する
+        function loadSeats() {
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            const seatSelect = document.getElementById('seat');
+            seatSelect.innerHTML = '';
+            seats.forEach(seat => {
+                const option = document.createElement('option');
+                option.value = seat.number;
+                option.textContent = seat.number;
+                seatSelect.appendChild(option);
+            });
+        }
+
+        // ページ読み込み時に予約情報と座席情報を読み込む
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReservations();
+            loadSeats();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="reservation_management.html">予約管理</a>
+            <a href="mypage.html">マイページ</a>
+            <a href="logout.html">ログアウト</a>
+        </nav>
+    </header>
+    <div class="page-title">
+        <h1>予約管理</h1>
+        <div class="button-container vertical">
+            <button class="seat_registration-button" onclick="location.href='seat_registration.html'">座席登録</button>
+            <button class="seat_status_button" onclick="location.href='seat_status.html'">現在の座席状況の確認</button>
+        </div>
+    </div>
+    <div class="info-box-reservation-management">
+        <h2>現在の予約情報</h2>
+        <ul id="reservation-list">
+            <!-- 予約情報がここに表示される -->
+        </ul>
+        <h2>新規予約情報の入力</h2>
+        <!-- このフォームの内容で新規に予約される -->
+        <form id="reservation-form" onsubmit="addReservation(); return false;">
+            <label for="name">予約者名:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="date">日時:</label>
+            <input type="datetime-local" id="date" name="date" required>
+            <label for="seat">座席番号:</label>
+            <select id="seat" name="seat" required>
+                <!-- 座席番号がここに表示されます -->
+            </select>
+            <label for="people">人数:</label>
+            <input type="number" id="people" name="people" required min="1" value="0">
+            <button type="submit" class="register-button">追加</button>
+        </form>
+        <button class="back-button" onclick="location.href='mypage.html'">戻る</button>
+    </div>
+</body>
+</html>

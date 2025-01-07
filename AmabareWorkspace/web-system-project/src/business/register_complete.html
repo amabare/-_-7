@@ -1,0 +1,42 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:03
+ソースコードの動作や役割: 事業者会員登録完了画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登録完了</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // ディスプレイに登録情報を表示
+        function displayData() {
+            const data = JSON.parse(localStorage.getItem('registrationData'));
+            if (data) {
+                document.getElementById('store-name').textContent = data.storeName;
+                document.getElementById('address').textContent = data.address;
+                document.getElementById('email').textContent = data.email;
+                document.getElementById('phone').textContent = data.phone;
+                document.getElementById('payment-method').textContent = data.paymentMethod;
+            }
+        }
+    </script>
+</head>
+<body onload="displayData()">
+    <div class="info-box">
+        登録が完了しました。
+    </div>
+    <div>
+        <p>店舗の名前: <span id="store-name"></span></p>
+        <p>住所: <span id="address"></span></p>
+        <p>メールアドレス: <span id="email"></span></p>
+        <p>電話番号: <span id="phone"></span></p>
+        <p>支払方法: <span id="payment-method"></span></p>
+    </div>
+    <button class="back-button" onclick="location.href='login_top.html'">次へ</button>
+</body>
+</html>

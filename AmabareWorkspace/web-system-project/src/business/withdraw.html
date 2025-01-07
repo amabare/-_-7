@@ -1,0 +1,38 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:17
+ソースコードの動作や役割: 退会画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退会</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // ローカルストレージから店舗情報を削除
+        function deleteStoreData() {
+            localStorage.removeItem('registrationData');
+            alert('店の情報が削除されました。');
+            window.location.href = '../login.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="reservation_management.html">予約管理</a>
+            <a href="mypage.html">マイページ</a>
+            <a href="logout.html">ログアウト</a>
+        </nav>
+    </header>
+    <div class="info-box-under-header">
+        <p>本当に退会しても<br>よろしいですか？</p>
+        <button class="withdraw-button" onclick="deleteStoreData()">退会する</button>
+        <button class="back-button" onclick="location.href='mypage.html'">戻る</button>
+    </div>
+</body>
+</html>

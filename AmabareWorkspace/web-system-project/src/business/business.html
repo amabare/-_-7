@@ -1,0 +1,52 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 9:53
+ソースコードの動作や役割: 事業者ログイン画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事業者ログイン</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // ログイン処理
+        function login(event) {
+            // フォームの空白での送信を防ぐ
+            event.preventDefault();
+
+            // ローカルストレージから登録情報を取得
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const data = JSON.parse(localStorage.getItem('registrationData'));
+            
+            // メールアドレスとパスワードが一致しているか確認
+            if (data && data.email === email && data.password === password) {
+                window.location.href = 'login_top.html';
+            } else {
+                alert('メールアドレスまたはパスワードが間違っています。');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="info-box">
+        メールアドレスとパスワードを<br>入力してください
+    </div>
+    <!-- このフォームの入力によりログイン処理 -->
+    <form onsubmit="login(event)">
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit" class="login-button">ログイン</button>
+    </form>
+    <button class="back-button" onclick="location.href='../login.html'">戻る</button>
+    <button class="register-button" onclick="location.href='register.html'">会員登録されていない方はこちら</button>
+</body>
+</html>

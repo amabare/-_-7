@@ -1,0 +1,66 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:10
+ソースコードの動作や役割: 座席状況画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>座席状況</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // 座席状況を読み込む関数
+        function loadSeatStatus() {
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            const seatStatus = document.getElementById('seat-status');
+            seatStatus.innerHTML = '';
+
+            let totalSeats = 0;
+            let usedSeats = 0;
+
+            seats.forEach(seat => {
+                const seatReservations = reservations.filter(reservation => reservation.seat === seat.number && reservation.arrived);
+                const seatUsage = seatReservations.reduce((total, reservation) => total + parseInt(reservation.people), 0);
+                totalSeats += parseInt(seat.count);
+                usedSeats += seatUsage;
+
+                const listItem = document.createElement('li');
+                listItem.textContent = `座席番号: ${seat.number}, 使用中: ${seatUsage} / ${seat.count}`;
+                seatStatus.appendChild(listItem);
+            });
+
+            const fillRate = (usedSeats / totalSeats) * 100;
+            const fillRateItem = document.createElement('li');
+            fillRateItem.textContent = `店全体の座席充填率: ${fillRate.toFixed(2)}%`;
+            seatStatus.appendChild(fillRateItem);
+        }
+
+        // ページ読み込み時に座席状況を読み込む
+        document.addEventListener('DOMContentLoaded', loadSeatStatus);
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="reservation_management.html">予約管理</a>
+            <a href="mypage.html">マイページ</a>
+            <a href="logout.html">ログアウト</a>
+        </nav>
+    </header>
+    <div class="page-title">
+        <h1>座席状況</h1>
+    </div>
+    <div class="info-box-seat-status">
+        <h2>現在の座席状況</h2>
+        <ul id="seat-status">
+            <!-- 座席の状況がここに表示されます -->
+        </ul>
+        <button class="back-button" onclick="location.href='reservation_management.html'">戻る</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:14
+ソースコードの動作や役割: ログイン時のトップページ
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン時トップページ</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // ローカルストレージから店舗情報を取得して表示する
+        function displayData() {
+            const data = JSON.parse(localStorage.getItem('registrationData'));
+            if (data) {
+                document.getElementById('store-name').textContent = data.storeName;
+            }
+        }
+    </script>
+</head>
+<body onload="displayData()">
+    <header>
+        <nav>
+            <a href="reservation_management.html">予約管理</a>
+            <a href="mypage.html">マイページ</a>
+            <a href="logout.html">ログアウト</a>
+        </nav>
+    </header>
+    <div class="page-title">
+        <h1>マイページ</h1>
+    </div>
+    <div class="store-name" id="store-name">
+        <!-- 店名がここに表示されます -->
+    </div>
+    <div class="button-container vertical">
+        <!-- <button class="mypage-button" onclick="location.href='member_info.html'">会員情報確認</button> -->
+        <button class="mypage-button" onclick="location.href='member_info_edit.html'">会員情報変更</button>
+        <button class="mypage-button" onclick="location.href='password_change.html'">パスワード変更</button>
+        <button class="mypage-button" onclick="location.href='withdraw.html'">退会</button>
+    </div>
+    <div class="bottom-button-container">
+        <button class="bottom-button" onclick="location.href='login_top.html'">トップページへ戻る</button>
+    </div>
+</body>
+</html>

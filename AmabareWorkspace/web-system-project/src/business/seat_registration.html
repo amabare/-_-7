@@ -1,0 +1,88 @@
+<!--
+ソースコード作成者: 山本
+修正日時: 2025/01/07 10:10
+ソースコードの動作や役割: 座席登録画面
+コメント: それぞれのコードの仕事をコメントアウト
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>座席登録</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script>
+        // 座席を登録する関数
+        function addSeat() {
+            const seatNumber = document.getElementById('seatNumber').value;
+            const seatCount = document.getElementById('seatCount').value;
+            if (seatCount < 0) {
+                alert('座席数は0以上でなければなりません。');
+                return;
+            }
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            seats.push({ number: seatNumber, count: seatCount });
+            localStorage.setItem('seats', JSON.stringify(seats));
+            alert('座席が登録されました。');
+            document.getElementById('seat-form').reset();
+            loadSeats();
+        }
+
+        // 座席を削除する関数
+        function deleteSeat(index) {
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            seats.splice(index, 1);
+            localStorage.setItem('seats', JSON.stringify(seats));
+            loadSeats();
+        }
+
+        // ローカルストレージから座席情報を読み込んで表示する関数
+        function loadSeats() {
+            const seats = JSON.parse(localStorage.getItem('seats')) || [];
+            const seatList = document.getElementById('seat-list');
+            seatList.innerHTML = '';
+            seats.forEach((seat, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `座席番号: ${seat.number}, 座席数: ${seat.count}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '削除';
+                deleteButton.onclick = () => deleteSeat(index);
+                listItem.appendChild(deleteButton);
+                seatList.appendChild(listItem);
+            });
+        }
+
+        // ページ読み込み時に座席情報を読み込む
+        document.addEventListener('DOMContentLoaded', loadSeats);
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="reservation_management.html">予約管理</a>
+            <a href="mypage.html">マイページ</a>
+            <a href="logout.html">ログアウト</a>
+        </nav>
+    </header>
+    <div class="page-title">
+        <h1>座席登録</h1>
+    </div>
+    <div class="info-box-seat-registration">
+        <h2>新規座席の登録</h2>
+        <!-- このフォームの内容で新規に座席が登録される -->
+        <form id="seat-form" onsubmit="addSeat(); return false;">
+            <label for="seatNumber">座席番号:</label>
+            <input type="text" id="seatNumber" name="seatNumber" required>
+            <label for="seatCount">座席数:</label>
+            <input type="number" id="seatCount" name="seatCount" min="0" required value="0">
+            <button type="submit" class="register-button">登録</button>
+        </form>
+        <h2>登録済みの座席</h2>
+        <ul id="seat-list">
+            <!-- 登録済みの座席がここに表示されます -->
+        </ul>
+        <button class="back-button" onclick="location.href='reservation_management.html'">戻る</button>
+    </div>
+</body>
+</html>
