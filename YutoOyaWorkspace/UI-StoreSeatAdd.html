@@ -1,0 +1,54 @@
+<!-- HTMLファイル -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事業者席情報登録画面</title>
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ヘッダーセクション -->
+    <!-- <header>
+        <h1>Web System Dashboard</h1>
+    </header> -->
+
+    <!-- ナビゲーションバー -->
+    <nav>
+        <a href="#">予約管理</a>
+        <a href="#">マイページ</a>
+        <a href="#">ログアウト</a>
+    </nav>
+
+    <!-- メインコンテンツエリア -->
+    <main>
+        <div class="form-container">
+            <form action="/register" method="post">
+                <!-- 席名入力 -->
+                <div class="form-item">
+                    <label for="storename">席名を入力してください
+                    </label>
+                    <input type="text" id="storename" name="storename" required>
+                </div>
+    
+                <!-- 人数入力 -->
+                <div class="form-item">
+                    <label for="address">収容できる人数を入力してください</label>
+                    <input type="address" id="address" name="address" required>
+                </div>
+        </div>
+
+        <!-- 戻るボタンや登録ボタンを表示 -->
+        <div class="form-buttons" style="padding-top: 50px" align="center">
+            <button class="button" type="button" onclick="history.back()">戻る</button>
+            <button class="fixed-submit-button" type="submit" form="register-form">登録する</button>
+        </div>
+    </main>
+
+    <!-- フッターセクション -->
+    <footer>
+        &copy; 2024 Web System. All rights reserved.
+    </footer>
+</body>
+</html>
