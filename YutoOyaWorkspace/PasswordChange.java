@@ -32,7 +32,7 @@ public class PasswordChange {
     }
 
     public static boolean Passwordcheck(String password1, String password2){
-        if (password1.equals(password2)){
+        if (password1.equals(password2) == true){
             return true;
         }
         return false;
