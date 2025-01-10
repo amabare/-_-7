@@ -25,6 +25,7 @@ public class PasswordChange {
         }
 
         //パスワードをハッシュ値に変換
+        //String hashpass = HashString(password1);
 
         //ハッシュ値に変換したパスワードをDBに格納
 
