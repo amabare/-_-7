@@ -12,9 +12,9 @@ public class PasswordAuthentication {
 
     // パスワードを検査するメソッド
     // boolean 型
-    public static boolean checkPassword(String inputPassword, String currentPasswordHash) {
+    public static boolean checkPassword(String inputpassword, String currentpassword) {
         // 入力されたパスワードと現行のパスワードが一致しているかを検査
-        return currentPasswordHash.equals(inputPassword);
+        return currentpassword.equals(inputpassword);
     }
 
     public static int main(String[] args) {
@@ -24,16 +24,19 @@ public class PasswordAuthentication {
             return 0;
         }
 
-        // 現在のパスワードのハッシュ値
-        String currentPasswordHash = args[0];
+        // 現在のパスワード
+        String currentpassword = args[0];
         // 入力されたパスワード
-        String inputPassword = args[1];
+        String inputpassword = args[1];
 
-        if (checkPassword(inputPassword, currentPasswordHash)) {
+        if (checkPassword(inputpassword, currentpassword)) {
             // パスワードが一致した場合
             System.out.println("パスワードが一致しました。メールを送信します。");
             // MailSendプログラムを呼び出す
-            MailSend.main();
+            // MailSend.main();
+
+            // テスト段階なので StaPasswordAuthentication.java を呼び出す
+            StaPasswordAuthentication.main(args);
         } else {
             // パスワードが一致しない場合
             System.out.println("パスワードが一致しません。再入力してください。");
