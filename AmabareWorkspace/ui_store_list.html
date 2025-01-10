@@ -12,27 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店舗検索結果</title>
     <link rel="stylesheet" href="ui_store_list.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/">検索　🔍</a>
-            <a href="/about">マイページ</a>
-            <a href="/contact">ログアウト</a>
-        </nav>
-    </header>
-
-    <div class="results-container">
-        <h2>検索結果</h2>
-        <div id="store-list">
-            <!-- ここに検索結果の店舗情報が表示されます -->
-        </div>
-    </div>
-
-    <div class="footer">
-        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
-    </div>
-
     <script>
         // 検索結果の店舗情報を表示する関数
         function displayStoreInformation(stores) {
@@ -60,5 +39,25 @@
                 .catch(error => console.error('Error:', error));
         };
     </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">検索　🔍</a>
+            <a href="/about">マイページ</a>
+            <a href="/contact">ログアウト</a>
+        </nav>
+    </header>
+
+    <div class="results-container">
+        <h2>検索結果</h2>
+        <div id="store-list">
+            <!-- ここに検索結果の店舗情報が表示されます -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
+    </div>
 </body>
 </html>

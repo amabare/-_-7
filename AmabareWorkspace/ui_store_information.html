@@ -12,27 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店舗情報</title>
     <link rel="stylesheet" href="ui_store_information.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/">検索　🔍</a>
-            <a href="/about">マイページ</a>
-            <a href="/contact">ログアウト</a>
-        </nav>
-    </header>
-
-    <div class="results-container">
-        <h2>店舗情報</h2>
-        <div id="store-info">
-            <!-- ここに選ばれた店舗の情報が表示されます -->
-        </div>
-    </div>
-
-    <div class="footer">
-        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
-    </div>
-
     <script>
         // URLパラメータから店舗IDを取得する関数
         function getStoreIdFromUrl() {
@@ -65,5 +44,25 @@
             }
         };
     </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">検索　🔍</a>
+            <a href="/about">マイページ</a>
+            <a href="/contact">ログアウト</a>
+        </nav>
+    </header>
+
+    <div class="results-container">
+        <h2>店舗情報</h2>
+        <div id="store-info">
+            <!-- ここに選ばれた店舗の情報が表示されます -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
+    </div>
 </body>
 </html>
