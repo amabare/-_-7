@@ -17,7 +17,7 @@ public class PasswordChange {
         String password2 = pass2;
 
         //password1とpassword2が一致しているかの確認
-        boolean check = Passwordcheck(password1, password2);
+        boolean check = password1.equals(password2);
 
         //一致していない場合はモジュールの外に出す.
         if (check == false){
@@ -29,12 +29,5 @@ public class PasswordChange {
         //ハッシュ値に変換したパスワードをDBに格納
 
         return 0;
-    }
-
-    public static boolean Passwordcheck(String password1, String password2){
-        if (password1.equals(password2) == true){
-            return true;
-        }
-        return false;
     }
 }
