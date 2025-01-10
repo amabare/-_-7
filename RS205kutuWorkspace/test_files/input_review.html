@@ -1,0 +1,33 @@
+<!-- 口コミ入力画面 作成者:佐々木 修正日時:12/31 -->
+<!-- 
+口コミを受け取るとそれをDBに登録し、口コミ送信完了画面に遷移する
+処理的にはその前の星評価も逐次送った方が楽かも
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 口コミ入力画面 </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "input_review.css">
+    </head>
+    <body>
+        <!-- user_header.htmlを挿入 -->
+        <div id="headhoot"> </div>
+        <script>
+            fetch('user_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <h2> 口コミを入力してください </h2>
+        <form action = "StabModule" method = "get">
+            <!-- タグ間に空白を空けると空白が入ったまま文章が出力されてしまうため、textareaタグ間に空白を入れていない -->
+            <textarea name = "review" rows = "10" cols = "100">とても美味しかったです！</textarea>
+            <!-- 口コミ送信完了画面のURLを貼る予定 -->
+            <p> <input type = "submit" id = "submit" value = "送信" /> </p>
+            <!-- onclick = "location.href = '画面遷移先のパス'"としても問題ない -->
+        </form>
+    </body>
+</html>

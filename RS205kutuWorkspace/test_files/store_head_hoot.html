@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事業者のヘッダ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #29a5e2;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        /* ナビゲーションバーのスタイル */
+        #head{
+            background-color: #29a5e2; /* 背景色を青に設定 */
+            overflow: hidden; /* コンテンツのオーバーフローを防止 */
+            display: flex; /* フレックスボックスを使用 */
+            justify-content: center; /* コンテンツを中央揃えに設定 */
+            gap: 50px; /* リンク間にスペースを追加 */
+            padding: 20px; /* ナビゲーションバーの内部余白を設定 */
+        }
+
+        #head a, #button{
+            color: black; /* テキスト色を黒に設定 */
+            text-align: center; /* テキストを中央揃えに設定 */
+            padding: 14px 16px; /* リンク内部の余白を設定 */
+            text-decoration: none; /* 下線を削除 */
+            background-color: white; /* 背景色を白に設定 */
+            border-radius: 4px; /* 角を丸くする */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+        }
+
+        #head a{
+            display: block; /* リンクをブロックレベル要素として設定 */
+        }
+
+        #head a:hover, #button:hover{
+            background-color: #575757;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        .card h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input, .form-container select, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <h1>Web System Dashboard</h1>
+    </header> -->
+
+    <nav id = "head">
+        <a href="stab_UI.html">予約管理</a>
+        <a href="stab_UI.html">マイページ</a>
+        <a href="stab_UI.html">ログアウト</a>
+    </nav>
+
+    <footer>
+        &copy; 2024 Web System. All rights reserved.
+    </footer>
+</body>
+</html>

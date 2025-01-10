@@ -1,0 +1,28 @@
+<!-- 席情報変更完了画面 作成者:佐々木 修正日時:12/31 -->
+<!-- 
+席情報の変更完了の旨、予約管理画面へと遷移するボタンを表示する
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 席情報変更完了画面 </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "seat_info_update_end.css">
+    </head>
+    <body>
+        <!-- user_header.htmlを挿入 -->
+        <div id="headhoot"> </div>
+        <script>
+            fetch('store_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <h1> 席情報を変更しました </h1>
+
+        <!-- 予約管理画面のURLを貼る予定 -->
+        <div id = "center"> <a href = "stab_ui.html" id = "bluebutton"> 座席確認へ戻る </a> </div>
+    </body>
+</html>

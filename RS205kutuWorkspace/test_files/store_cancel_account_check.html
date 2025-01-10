@@ -1,0 +1,36 @@
+<!-- 事業者退会確認画面 作成者:佐々木 修正日時:1/1 -->
+<!-- 
+「はい」か「いいえ」を表示して「はい」なら退会処理(会員情報の削除)・退会画面への遷移をし、
+「いいえ」ならマイページに遷移する
+-->
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <title> 退会確認画面 </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "store_cancel_account_check.css">
+    </head>
+    <body>
+        <!-- user_header.htmlを挿入 -->
+        <div id="headhoot"> </div>
+        <script>
+            fetch('store_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <h1> 本当に退会しても</h1>
+
+        <h1>よろしいですか? </h1>
+        <!-- ボタンを等間隔・中央寄せで挿入 -->
+        <table align = "center" cellspacing = "100">
+            <tr>
+                <!-- 退会完了画面、マイページへのURLを貼る予定 -->
+                <td> <a href = "stab_UI.html" id = "button" class = "yes"> はい </a> </td>
+                <td> <a href = "stab_UI.html" id = "button" class = "no"> いいえ </a> </td>
+            </tr>
+        </table>
+    </body>
+</html>
