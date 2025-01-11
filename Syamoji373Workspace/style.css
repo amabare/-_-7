@@ -111,31 +111,35 @@ nav a:hover {
   }
 /* 席割り振り画面 */
  .assingnment{
-  width: 80%; /* 幅を調整 */
-  margin: 20px auto; /* 中央寄せ */
-  border: 2px solid #ccc; /* 枠線 */
 
+  width: 80%; 
+  /* 幅を調整 */
+  margin: 20px auto;
+   /* 中央寄せ */
+  border: 2px solid #ccc; 
+  /* 枠線 */
  }
 
  .item {
-            border: 1px solid #ccc; /* 枠線 */
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .item-header {
-            display: flex;
-            /* 左右に配置 */
-            justify-content: space-between; 
-            /* 中央揃え */
-            align-items: center; 
-            margin-bottom: 5px;
-            /* セルに枠線を設定 */
-            border: 1px solid #ccc; 
-        }
-        .options {
-            display: flex;
-            align-items: center;
-        }
-        .options label {
-            margin-right: 10px;
-        }
+  /* 枠線 */
+  border: 1px solid #ccc; 
+  padding: 10px;
+  margin-bottom: 10px;
+  }
+  .item-header {
+    /* 左右に配置 */
+    display: flex;
+    /* 中央揃え */
+    justify-content: space-between; 
+    align-items: center;
+    /* セルに枠線を設定 */
+    margin-bottom: 5px;
+    border: 4px solid #ccc; 
+  }
+ .options {
+     display: flex;
+     align-items: center;
+ }
+ .options label {
+     margin-right: 10px;
+ }

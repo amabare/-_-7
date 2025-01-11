@@ -13,17 +13,14 @@ public class ChangeReservation {
         String date_and_time;
         // 予約人数
         String number_of_people;
-        int flag = 0;
-
-        while(flag == 0){
-            // 入力を受け取る？？？
-            reserver = getParameter("");
-            date_and_time = getParameter("");
-            number_of_people = getParameter("");
-
-            // 入力チェック
+        // 入力を受け取る
+        for (;;) {
+            reserver = request.getParameter("");
+            date_and_time = request.getParameter("");
+            number_of_people = request.getParameter("");
+        //入力チェック
             if(reserver != null && date_and_time != null && number_of_people != null){
-                flag = 1;
+                break;
             }
         }
         
