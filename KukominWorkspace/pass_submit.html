@@ -3,10 +3,7 @@
 ソースコードの動作や役割: password変更の際に入力する現在のpasswordを入力する画面
                         正しいpasswordかの判定もする
                         誤ったパスワード
-コメント: DB関係がまだ未実装
-         submitされたデータを取得していない
-         エラー判定が出来てない(ログイン情報はどこから持ってくるか謎)
-         true,falseで画面遷移先が変えられてない
+コメント: DB関係がまだ未実装 パスワード判定モジュールが必要ー＞エラー判定が出来てない(ログイン情報はどこから持ってくるか謎)
 -->
 
 <!-- HTMLファイル -->
@@ -43,23 +40,16 @@
         <!-- 情報入力フォーム -->
         <div class="form-container">
             <h2>既存のパスワードを入力してください</h2>
-            <form>
+            <!-- 入力されたパスワードが正しいかのチェックするモジュール呼び出し(たぶんない)エラー時遷移先もたぶんない -->
+            <form action="pass_check" method="post">
                 <label for="pwd">パスワード:</label>
                 <input type="text" id="pwd" name="pwd" placeholder="Enter your password">
-
-                <!-- <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email">
-
-                <label for="role">Role:</label>
-                <select id="role" name="role">
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                    <option value="guest">Guest</option>
-                </select> -->
+                
                 <!-- ボタン群 -->
                 <div class="button-group">
                     <button type="submit">次へ</button>
-                    <button type="button">戻る</button>
+                    <!-- 本当はマイページに遷移 -->
+                    <button class="button" type="button" onclick="window.location.href='sample.html'">戻る</button>
                 </div>
             </form>
         </div>

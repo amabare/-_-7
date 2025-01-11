@@ -3,7 +3,6 @@
 修正日時: 2025/01/05
 ソースコードの動作や役割:日時別予約情報の表示
 コメント: SelectDBを使っていないため要調整
-        　サーブレットの呼び出しができていない
 */
 
 @WebServlet("/viewSchedule")
@@ -11,7 +10,7 @@ public class ViewScheduleServlet extends HttpServlet {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/restaurant_db";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "password";
+    private static final String DB_PASSWORD = "root00";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
