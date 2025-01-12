@@ -1,0 +1,45 @@
+sudo javac -cp /opt/tomcat/lib/servlet-api.jar:. DateOfViewReservation.java
+sudo cp  WEB-INF/classes
+
+
+sudo javac -cp /usr/share/java/mysql-connector-j.jar DatabaseUtility.java
+sudo mysql -u root -p
+
+java -cp .:/usr/share/java/mysql-connector-java-9.1.0.jar DateOfViewReservation
+
+sudo systemctl restart tomcat
+
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| your_table            |
+| 予約情報              |
+| 予約者基本情報        |
+| 利用者登録情報        |
+| 店舗情報              |
++-----------------------+
+
+http://34.238.111.79:8080/
+
+
+INSERT INTO 利用者登録情報 (氏名, 性別, メールアドレス, 電話番号, パスワード)
+VALUES 
+('山田 太郎', 'M', 'taro.yamada@example.com', '08012345678', 'password1234'),
+('佐藤 花子', 'F', 'hanako.sato@example.com', '09087654321', 'password5678'),
+('鈴木 一郎', 'M', 'ichiro.suzuki@example.com', '07023456789', 'password91011'),
+('田中 美奈子', 'F', 'minako.tanaka@example.com', '08098765432', 'password1213');
+
+
+ client_loop: send disconnect: Broken pipe
+
+
+mysql> INSERT INTO 店舗情報 (店舗ID, 店舗名, メールアドレス, パスワード, 住所, 電話番号, 営業時間)
+    -> VALUES
+    -> (1, '中央カフェ', 'cafe1@example.com', 'password1', '東京都中央区1-1-1', '0123456789', '09:00~18:00'),
+    -> (2, '北町レストラン', 'restaurant2@example.com', 'password2', '北海道北町2-2-2', '0987654321', '10:00~21:00');
+
+    mysql> INSERT INTO 席 (店舗ID, 席名, 収容人数, 使用状況)
+    -> VALUES
+    -> (1, '窓際の席', 4, '空席'),
+    -> (1, '個室1', 2, '予約'),
+    -> (2, 'カウンター席1', 1, '使用中');

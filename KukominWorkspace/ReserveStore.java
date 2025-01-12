@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ReservationServlet extends HttpServlet {
 
     // データベース接続情報
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/restaurant_db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/my_database";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "password";
 
@@ -47,12 +47,10 @@ public class ReservationServlet extends HttpServlet {
             String sql = "INSERT INTO reservations (restaurant_id, customer_name, reservation_date, reservation_time, party_size, phone) " +
                          "VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setInt(1, restaurantId);
-                stmt.setString(2, customerName);
-                stmt.setString(3, reservationDate);
-                stmt.setString(4, reservationTime);
-                stmt.setInt(5, partySize);
-                stmt.setString(6, phone);
+                stmt.setString(1, customerName);
+                stmt.setString(2, reservationDate);
+                stmt.setString(3, reservationTime);
+                stmt.setInt(4, partySize);
 
                 // クエリ実行
                 int rowsInserted = stmt.executeUpdate();
@@ -68,3 +66,28 @@ public class ReservationServlet extends HttpServlet {
         }
     }
 }
+my_databaseというデータベース名で7つのテーブルを作りたいです
+
+テーブル1
+店舗情報テーブル
+店舗ID、店舗名住所支払方法、電話番号、メールアドレス、パスワード、検索タグ(カフェなど)
+テーブル２
+席情報
+
+CREATE TABLE 店舗情報 (
+    店舗ID INT AUTO_INCREMENT PRIMARY KEY,
+    店舗名 VARCHAR(255) NOT NULL,
+    メールアドレス VARCHAR(255) UNIQUE NOT NULL,
+    パスワード CHAR(20) NOT NULL,
+    住所 VARCHAR(255) NOT NULL,
+    電話番号 VARCHAR(11) NOT NULL,
+);
+
+CREATE TABLE 予約者基本情報 (
+    予約者ID INT AUTO_INCREMENT PRIMARY KEY,
+    ユーザID INT NOT NULL,
+    氏名 VARCHAR(255) NOT NULL,
+    電話番号 CHAR(11) NOT NULL,
+    メールアドレス VARCHAR(255),
+    FOREIGN KEY (ユーザID) REFERENCES 利用者登録情報(利用者ID)
+);
