@@ -2,7 +2,7 @@
 作成者：シモジ
 更新日時：
 動作・役割：席割り振り画面
-コメント： 
+コメント： ,bottom(=submit)はDBに送る処理もいる
 -->
 
 <!DOCTYPE html>
@@ -24,44 +24,66 @@
         <a href="#">マイページ</a>
         <a href="#">ログアウト</a>
     </nav>
-
     <div class="header">
       <h1>席の割り振り</h1>
     </div>
 
-    <div class="assingnment">
-      <div class="item">
-          <div class="item-header">
-              <div>氏名 〇名</div>
-              <div>2025年1月30日15時00分</div>
-              </div>
-              <div class="options">
-                <label><input type="radio" name="kamiko" value="not_assigned"> 割り振らない</label>
-                <label><input type="radio" name="kamiko" value="assigned"> 割り振る</label>
-                <select>
-                    <option value="">座席を選択してください</option>
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
-                </select>
-          </div>
-          
-      </div>
+      <div id="assignment-container">
+        <!-- JavaScriptで動的に割り当て情報を挿入 -->
+    </div>
 
-      <div class="item">
-          <div class="item-header">
-              <div>氏名 〇名</div>
-              <div>2025年2月3日12時30分</div>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="sakamoto" value="not_assigned"> 割り振らない</label>
-            <label><input type="radio" name="sakamoto" value="assigned"> 割り振る</label>
-            <select>
-                <option value="">座席を選択してください</option>
-                <option value="B1">B1</option>
-                <option value="B2">B2</option>
-            </select>
-        </div>
-      </div>
+    <script>
+        // 事前に用意する変数
+        const reservations = [
+            {
+                name: "上子",
+                number: "2名",
+                date: "2025年1月30日15時00分",
+                seats: ["A1", "A2"]
+            },
+            {
+                name: "坂本",
+                number: "3名",
+                date: "2025年2月3日12時30分",
+                seats: ["B1", "B2"]
+            }
+        ];
+
+        // 割り振り情報を挿入する関数
+        function renderAssignments() {
+            const container = document.getElementById("assignment-container");
+
+            reservations.forEach((reservation, index) => {
+                // HTMLを生成
+                const itemHTML = `
+                    <div class="item">
+                        <div class="item-header">
+                            <div>氏名: ${reservation.name} ${reservation.number}</div>
+                            <div>${reservation.date}</div>
+                        </div>
+                        <div class="options">
+                            <label>
+                                <input type="radio" name="assignment-${index}" value="not_assigned"> 割り振らない
+                            </label>
+                            <label>
+                                <input type="radio" name="assignment-${index}" value="assigned"> 割り振る
+                            </label>
+                            <select>
+                                <option value="">座席を選択してください</option>
+                                ${reservation.seats.map(seat => `<option value="${seat}">${seat}</option>`).join("")}
+                            </select>
+                        </div>
+                    </div>
+                `;
+
+                // コンテナに追加
+                container.innerHTML += itemHTML;
+            });
+        }
+
+        // ページロード時に割り振り情報を描画
+        renderAssignments();
+    </script>
 
     <div class="main">
       <form>
