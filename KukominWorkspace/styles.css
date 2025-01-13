@@ -2,10 +2,45 @@
 
 /* ページ全体の基本スタイル */
 body {
-    font-family: Arial, sans-serif; /* デフォルトフォントをArialに設定 */
-    margin: 0; /* デフォルトのマージンを削除 */
-    padding: 0; /* デフォルトのパディングを削除 */
-    background-color: #f4f4f9; /* 背景色を淡いグレーに設定 */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.reserved {
+    background-color: #f8d7da; /* 赤系: 予約済み */
+    color: #721c24;
+}
+
+.available {
+    background-color: #d4edda; /* 緑系: 空き */
+    color: #155724;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 /* ヘッダーのスタイル */
@@ -112,3 +147,4 @@ footer {
     bottom: 0; /* 下端に配置 */
     width: 100%; /* 幅を100%に設定 */
 }
+

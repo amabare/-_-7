@@ -3,7 +3,14 @@
 修正日時: 2025/01/12
 ソースコードの動作や役割:日時別予約情報をDBからデータを取得し出力する
 コメント: データを取得はできるが何をどこからとってくるか未設定　
+
+INSERT INTO seats (seat_name) VALUES ('A席'), ('B席'), ('C席');
+
+INSERT INTO reservations (seat_id, reservation_date, start_time, end_time)
+VALUES (1, '2025-01-13', '12:00:00', '13:00:00'),
+       (2, '2025-01-13', '13:00:00', '14:00:00');
 */
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -24,40 +31,56 @@ public class DateOfViewReservation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String date = request.getParameter("date"); // 日付 (YYYY-MM-DD形式)
+        String date = request.getParameter("date");
 
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         try {
-            // 席情報を取得
+            if (date == null || date.isEmpty()) {
+                throw new IllegalArgumentException("日付が指定されていません");
+            }
+
             List<Map<String, Object>> seats = fetchSeats();
+            List<LocalTime> timeSlots = new ArrayList<>();
+            LocalTime startTime = LocalTime.of(9, 0);
+            LocalTime endTime = LocalTime.of(22, 0);
 
-            // タイムシフト表のHTML開始
-            out.println("<table>");
+            while (!startTime.equals(endTime)) {
+                timeSlots.add(startTime);
+                startTime = startTime.plusHours(1);
+            }
+
+            // HTMLヘッダー部分を出力
+            out.println("<!DOCTYPE html>");
+            out.println("<html lang='ja'>");
+            out.println("<head>");
+            out.println("<meta charset='UTF-8'>");
+            out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+            out.println("<title>タイムシフト管理</title>");
+            out.println("<link rel='stylesheet' href='styles.css'>"); // CSSリンク
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>タイムシフト管理</h1>");
+
+            // タイムスケジュールのテーブルを出力
+            out.println("<table border='1'>");
+
+            // ヘッダー行 (時間)
             out.println("<tr>");
-            out.println("<th>時間</th>");
-
-            // 席ごとに列を作成
-            for (Map<String, Object> seat : seats) {
-                out.print("<th>" + seat.get("seat_name") + "</th>");
+            out.println("<th>席</th>");
+            for (LocalTime time : timeSlots) {
+                out.println("<th>" + time + "～" + time.plusHours(1) + "</th>");
             }
             out.println("</tr>");
 
-            // 時間帯のループ (例: 9:00～22:00)
-            LocalTime startTime = LocalTime.of(9, 0);
-            LocalTime endTime = LocalTime.of(22, 0);
-            while (!startTime.equals(endTime)) {
-                LocalTime nextTime = startTime.plusHours(1); // 1時間ごと
+            // 席ごとの行を出力
+            for (Map<String, Object> seat : seats) {
                 out.println("<tr>");
-                out.println("<td>" + startTime + "～" + nextTime + "</td>");
-
-                // 各席に対して予約情報を取得
-                for (Map<String, Object> seat : seats) {
+                out.println("<td>" + seat.get("seat_name") + "</td>");
+                for (LocalTime time : timeSlots) {
                     int seatId = (int) seat.get("id");
-
-                    // 予約状況を取得
-                    boolean isReserved = checkReservation(seatId, date, startTime);
+                    boolean isReserved = checkReservation(seatId, date, time);
 
                     if (isReserved) {
                         out.println("<td class='reserved'>予約済み</td>");
@@ -66,48 +89,24 @@ public class DateOfViewReservation extends HttpServlet {
                     }
                 }
                 out.println("</tr>");
-                startTime = nextTime; // 次の時間帯へ
             }
             out.println("</table>");
+            out.println("</body>");
+            out.println("</html>");
         } catch (Exception e) {
-            e.printStackTrace(out); // エラーを表示
-            out.println("<p>エラーが発生しました。</p>");
+            e.printStackTrace();
+            out.println("<p>エラーが発生しました: " + e.getMessage() + "</p>");
         }
     }
 
-    // private List<Map<String, Object>> fetchSeats() throws Exception {
-    //     List<Map<String, Object>> seats = new ArrayList<>();
-    //     ResultSet resultSet = DatabaseUtility.select("seats", "1=1", new Object[]{});
-
-    //     while (resultSet.next()) {
-    //         Map<String, Object> seat = new HashMap<>();
-    //         seat.put("id", resultSet.getInt("id"));
-    //         seat.put("seat_name", resultSet.getString("seat_name"));
-    //         seats.add(seat);
-    //     }
-    //     return seats;
-    // }
-
     private List<Map<String, Object>> fetchSeats() throws Exception {
-        return DatabaseUtility.select("seats", "1=1", new Object[]{}); // 修正済み
+        return DatabaseUtility.select("seats", null, null);
     }
 
-
-    // private boolean checkReservation(int seatId, String date, LocalTime startTime) throws Exception {
-    //     ResultSet resultSet = DatabaseUtility.select(
-    //             "reservations",
-    //             "seat_id = ? AND reservation_date = ? AND start_time <= ? AND end_time > ?",
-    //             new Object[]{seatId, date, startTime.toString(), startTime.toString()}
-    //     );
-    //     return resultSet.next();
-    // }
     private boolean checkReservation(int seatId, String date, LocalTime startTime) throws Exception {
-        List<Map<String, Object>> reservations = DatabaseUtility.select(
-            "reservations",
-            "seat_id = ? AND reservation_date = ? AND start_time <= ? AND end_time > ?",
-            new Object[]{seatId, date, startTime.toString(), startTime.toString()}
-        );
-        return !reservations.isEmpty(); // 修正済み
+        String whereClause = "seat_id = ? AND reservation_date = ? AND start_time <= ? AND end_time > ?";
+        Object[] params = {seatId, date, startTime.toString(), startTime.toString()};
+        List<Map<String, Object>> reservations = DatabaseUtility.select("reservations", whereClause, params);
+        return !reservations.isEmpty();
     }
-
 }

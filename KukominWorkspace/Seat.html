@@ -2,61 +2,23 @@
 修正日時: 2025/01/05
 ソースコードの動作や役割: 日時別予約情報の日付選択画面
 コメント: DB関係がまだ未実装 -->
-
-<!-- HTMLファイル -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>タイムシフト管理</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        form {
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 80%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .reserved {
-            background-color: #f8d7da; /* 赤系: 予約済み */
-        }
-        .in-use {
-            background-color: #ffeeba; /* 黄色系: 使用中 */
-        }
-        .available {
-            background-color: #d4edda; /* 緑系: 空き */
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>タイムシフト管理</h1>
-    <form action="/ViewSchedule" method="get">
+    <form action="/viewSchedule" method="get">
         <label for="date">日付:</label>
         <input type="date" id="date" name="date" required>
         <button type="submit">表示</button>
     </form>
     <div id="schedule">
-        <!-- 検索結果がここに表示されます -->
+        <!-- サーブレットから生成されるHTMLテーブルがここに挿入されます -->
     </div>
 </body>
 </html>
