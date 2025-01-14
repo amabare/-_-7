@@ -1,8 +1,8 @@
 /* 
     作成者: 山本
-    修正日時: 2025/01/05 13:20
+    修正日時: 2025/01/14 22:51
     動作や役割: 席情報の登録完了画面のスタイルを定義するCSSファイル
-    コメント: なし
+    コメント: コメントアウトを追加
 */
 
 /* ページ全体の基本スタイル */
@@ -30,7 +30,7 @@ nav {
     gap: 50px; /* リンク間にスペースを追加 */
     padding: 20px; /* ナビゲーションバーの内部余白を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a {
     display: block; /* リンクをブロックレベル要素として設定 */
     color: black; /* テキスト色を白に設定 */
@@ -41,7 +41,7 @@ nav a {
     border-radius: 4px; /* 角を丸くする */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a:hover {
     background-color: #575757; /* ホバー時の背景色を濃い緑に変更 */
 }
@@ -51,19 +51,19 @@ nav a:hover {
     max-width: 500px; /* 最大幅を設定 */
     padding: 20px; /* フォーム内部の余白を設定 */
 }
-
+/* フォームコンテナのタイトルのスタイル */
 .form-container h2 {
     margin-top: 0;
     text-align: center;
 }
-
+/* ボタンのスタイル */
 .form-buttons {
     display: flex;
     justify-content: center; /* ボタンを中央揃えに設定 */
     gap: 10px; /* ボタン間のスペースを設定 */
     margin-top: 20px;
 }
-
+/* ボタンのスタイル */
 .button {
     background-color: #29a5e2; /* ボタンの背景色を変更 */
     padding: 10px 20px;
@@ -73,7 +73,7 @@ nav a:hover {
     font-size: 16px; /* ボタンの文字サイズを大きく設定 */
     font-weight: bold; /* ボタンの文字を太く設定 */
 }
-
+/* ボタンのスタイル */
 .button:hover {
     background-color: #29a4e2a8;
 }

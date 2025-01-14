@@ -1,10 +1,11 @@
 /* 
     作成者: 山本
-    修正日時: 2025/01/05 13:18
+    修正日時: 2025/01/14 22:36
     動作や役割: 新規店舗登録画面のスタイルを定義するCSSファイル
-    コメント: なし
+    コメント: それぞれのスタイルのコメントを追加
 */
 
+/* ボディのスタイル */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,7 +15,7 @@ body {
     height: 100vh;
     margin: 0;
 }
-
+/* フォームのスタイル */
 .form-container {
     background-color: #fff;
     padding: 20px;
@@ -23,7 +24,7 @@ body {
     width: 1000px;
     position: relative; 
 }
-
+/* フォームのタイトルのスタイル */
 .form-container h2 {
     margin-top: 0;
     text-align: left;
@@ -33,26 +34,26 @@ body {
     background-color: #29a5e2; /* 背景色を追加して塗りつぶす */
     display: inline-block; /* 枠の大きさを文字の幅に合わせる */
 }
-
+/* フォームのスタイル */
 .form-group {
     display: flex;
     gap: 50px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-item {
     flex: 1;
     margin-right: 15px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-item:last-child {
     margin-right: 0;
 }
-
+/* フォームのアイテムのスタイル */
 .form-container label {
     display: block;
     margin-bottom: 5px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-container input, .form-container select {
     max-width: 300px; /* 入力欄の最大幅を設定 */
     width: 100%;
@@ -61,7 +62,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-container button {
     width: 20%;
     padding: 10px;
@@ -72,19 +73,19 @@ body {
     font-size: 16px; /* ボタンの文字サイズを大きく設定 */
     font-weight: bold; /* ボタンの文字を太く設定 */
 }
-
+/* フォームのアイテムのスタイル */
 .form-buttons button[type="button"] {
     background-color: #29a5e2; /* 戻るボタンの背景色を変更 */
 }
-
+/* フォームのアイテムのスタイル */
 .form-buttons button:hover {
     background-color: #29a4e2a8;
 }
-
+/* フォームのアイテムのスタイル */
 .form-buttons button[type="button"]:hover {
     background-color: #29a4e2a8;
 }
-
+/* フォームのアイテムのスタイル */
 .terms-link {
     text-align: center; /* テキストを中央揃えに設定 */
     position: absolute;
@@ -92,16 +93,16 @@ body {
     left: 50%;
     transform: translateX(-50%);
 }
-
+/* フォームのアイテムのスタイル */
 .terms-link a {
     color: #29a5e2;
     text-decoration: none;
 }
-
+/* フォームのアイテムのスタイル */
 .terms-link a:hover {
     text-decoration: underline;
 }
-
+/* フォームのアイテムのスタイル */
 .fixed-submit-button {
     position: absolute;
     bottom: 20px;
@@ -109,7 +110,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-
+/* フォームのアイテムのスタイル */
 .fixed-submit-button:hover {
     background-color: #29a5e2;
 }
@@ -127,7 +128,7 @@ body {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
-
+/* モーダルウィンドウのスタイル */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -137,14 +138,14 @@ body {
     max-width: 600px;
     border-radius: 8px;
 }
-
+/* モーダルウィンドウのスタイル */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
+/* モーダルウィンドウのスタイル */
 .close:hover,
 .close:focus {
     color: black;

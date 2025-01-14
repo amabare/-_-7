@@ -1,10 +1,10 @@
 /* 
     作成者: 山本
-    修正日時: 2025/01/05 13:21
+    修正日時: 2025/01/14 23:06
     動作や役割: 店舗一覧画面のスタイルを定義するCSSファイル
-    コメント: なし
+    コメント: コメントアウトを追加
 */
-
+/* ボディのスタイル */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-
+/* ヘッダーのスタイル */
 header {
     background-color: #29a5e2; /* 背景色を緑に設定 */
     color: white; /* テキスト色を白に設定 */
@@ -31,7 +31,7 @@ nav {
     gap: 50px; /* リンク間にスペースを追加 */
     padding: 20px; /* ナビゲーションバーの内部余白を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a {
     display: block; /* リンクをブロックレベル要素として設定 */
     color: black; /* テキスト色を白に設定 */
@@ -42,11 +42,11 @@ nav a {
     border-radius: 4px; /* 角を丸くする */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a:hover {
     background-color: #575757; /* ホバー時の背景色を濃い緑に変更 */
 }
-
+/* コンテナのスタイル */
 .results-container {
     margin: 20px auto;
     max-width: 800px;
@@ -55,27 +55,27 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+/* コンテナのタイトルのスタイル */
 .results-container h2 {
     text-align: center;
 }
-
+/* アイテムのスタイル */
 .store-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
-
+/* アイテムのタイトルのスタイル */
 .store-item h3 {
     margin: 0;
 }
-
+/* フッターのスタイル */
 .footer {
     margin-top: auto;
     padding: 20px;
     text-align: left;
     background-color: #f0f0f0;
 }
-
+/* ボタンのスタイル */
 .button {
     background-color: #29a5e2; /* ボタンの背景色を変更 */
     padding: 10px 20px;
@@ -86,7 +86,7 @@ nav a:hover {
     font-weight: bold; /* ボタンの文字を太く設定 */
     color: white;
 }
-
+/* ボタンのスタイル */
 .button:hover {
     background-color: #29a4e2a8;
 }

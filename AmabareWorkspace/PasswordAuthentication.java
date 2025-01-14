@@ -2,8 +2,7 @@
  * ソースコード作成者: 山本
  * 修正日時: 2024/12/26　11:41
  * ソースコードの動作や役割: パスワードを検査する
- * コメント: 今はまだメールサーバが構築されておらず MailSend.java が機能しない。
- * 　　　　  テストを行うときはドライバの設定を適切にして行うように。
+ * コメント: 引数が3つ以上の場合の処理を追加
  */
 
 package AmabareWorkspace;
@@ -21,6 +20,9 @@ public class PasswordAuthentication {
         // 引数が足りない場合
         if (args.length < 2) {
             System.out.println("入力されていない部分があります。再入力してください。");
+            return 0;
+        } else if (args.length > 2) {
+            System.out.println("入力された値が多すぎます。再入力してください。");
             return 0;
         }
 

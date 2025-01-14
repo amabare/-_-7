@@ -2,9 +2,9 @@
     作成者: 山本
     修正日時: 2025/01/05 13:19
     動作や役割: 新規ユーザー登録画面のスタイルを定義するCSSファイル
-    コメント: なし
+    コメント: コメントアウトを追加
 */
-
+/* ボディのスタイル */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,7 +14,7 @@ body {
     height: 100vh;
     margin: 0;
 }
-
+/* フォームのスタイル */
 .form-container {
     background-color: #fff;
     padding: 20px;
@@ -23,7 +23,7 @@ body {
     width: 1000px;
     position: relative; 
 }
-
+/* フォームのタイトルのスタイル */
 .form-container h2 {
     margin-top: 0;
     text-align: left;
@@ -33,26 +33,26 @@ body {
     background-color: #29a5e2; /* 背景色を追加して塗りつぶす */
     display: inline-block; /* 枠の大きさを文字の幅に合わせる */
 }
-
+/* フォームのスタイル */
 .form-group {
     display: flex;
     gap: 50px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-item {
     flex: 1;
     margin-right: 15px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-item:last-child {
     margin-right: 0;
 }
-
+/* フォームのラベルのスタイル */
 .form-container label {
     display: block;
     margin-bottom: 5px;
 }
-
+/* フォームの入力欄のスタイル */
 .form-container input, .form-container select {
     max-width: 300px; /* 入力欄の最大幅を設定 */
     width: 100%;
@@ -61,7 +61,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
+/* フォームの入力欄のスタイル */
 .form-container button {
     width: 20%;
     padding: 10px;
@@ -72,19 +72,19 @@ body {
     font-size: 16px; /* ボタンの文字サイズを大きく設定 */
     font-weight: bold; /* ボタンの文字を太く設定 */
 }
-
+/* フォームの入力欄のスタイル */
 .form-buttons button[type="button"] {
     background-color: #29a5e2; /* 戻るボタンの背景色を変更 */
 }
-
+/* フォームの入力欄のスタイル */
 .form-buttons button:hover {
     background-color: #29a4e2a8;
 }
-
+/* フォームの入力欄のスタイル */
 .form-buttons button[type="button"]:hover {
     background-color: #29a4e2a8;
 }
-
+/* フォームの入力欄のスタイル */
 .terms-link {
     text-align: center; /* テキストを中央揃えに設定 */
     position: absolute;
@@ -92,16 +92,16 @@ body {
     left: 50%;
     transform: translateX(-50%);
 }
-
+/* フォームの入力欄のスタイル */
 .terms-link a {
     color: #29a5e2;
     text-decoration: none;
 }
-
+/* フォームの入力欄のスタイル */
 .terms-link a:hover {
     text-decoration: underline;
 }
-
+/* フォームの入力欄のスタイル */
 .fixed-submit-button {
     position: absolute;
     bottom: 20px;
@@ -109,7 +109,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-
+/* フォームの入力欄のスタイル */
 .fixed-submit-button:hover {
     background-color: #29a5e2;
 }
@@ -127,7 +127,7 @@ body {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
-
+/* モーダルウィンドウのスタイル */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -137,14 +137,14 @@ body {
     max-width: 600px;
     border-radius: 8px;
 }
-
+/* モーダルウィンドウのスタイル */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
+/* モーダルウィンドウのスタイル */
 .close:hover,
 .close:focus {
     color: black;

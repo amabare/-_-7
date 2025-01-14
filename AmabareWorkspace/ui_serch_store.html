@@ -1,8 +1,9 @@
 <!--
 作成者: 山本
-修正日時: 2025/01/05 12:57
+修正日時: 2025/01/14 22:53
 動作や役割: 一般ユーザが店舗を検索する画面
-コメント: 修正点は「表示言語を日本語にした」と「コードの作成情報の記述」
+コメント: JavaScriptを外部ファイルに移動
+　　　　  タグとタグ中の文字の間にスペースを入れた
 -->
 
 <!DOCTYPE html>
@@ -10,63 +11,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>店舗検索</title>
+    <title> 店舗検索 </title>
     <link rel="stylesheet" href="ui_serch_store.css">
-    <script>
-        // 営業時間の選択肢を動的に生成する関数
-        function populateHoursOptions() {
-            const hoursSelect = document.getElementById('hours');
-            for (let i = 0; i < 24; i++) {
-                const hour = i.toString().padStart(2, '0') + ':00～';
-                const option = document.createElement('option');
-                option.value = hour;
-                option.textContent = hour;
-                hoursSelect.appendChild(option);
-            }
-        }
-
-        // ページが読み込まれたときに営業時間の選択肢を生成
-        window.onload = function() {
-            populateHoursOptions();
-        };
-    </script>
+    <script src="ui_serch_store.js"></script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/">検索　🔍</a>
-            <a href="/about">マイページ</a>
-            <a href="/contact">ログアウト</a>
+            <a href="/"> 検索　🔍 </a>
+            <a href="/about"> マイページ </a>
+            <a href="/contact"> ログアウト </a>
         </nav>
     </header>
 
     <div class="form-container">
-        <h2>店舗検索</h2>
+        <h2> 店舗検索 </h2>
         <form id="search-form" action="/searchStore" method="get">
             <div class="form-group">
                 <div class="form-item">
-                    <label for="search">検索</label>
+                    <label for="search"> 検索 </label>
                     <input type="text" id="search" name="search">
                 </div>
                 <div class="form-item">
-                    <label for="tag">タグ</label>
+                    <label for="tag"> タグ </label>
                     <select id="tag" name="tag">
-                        <option value="">選択してください</option>
-                        <option value="tag1">カフェ</option>
-                        <option value="tag2">レストラン</option>
-                        <option value="tag3">居酒屋</option>
+                        <option value=""> 選択してください </option>
+                        <option value="tag1"> カフェ </option>
+                        <option value="tag2"> レストラン </option>
+                        <option value="tag3"> 居酒屋 </option>
                     </select>
                 </div>
                 <div class="form-item">
-                    <label for="hours">営業時間</label>
+                    <label for="hours"> 営業時間 </label>
                     <select id="hours" name="hours">
-                        <option value="">選択してください</option>
+                        <option value=""> 選択してください </option>
                         <!-- 営業時間の選択肢はJavaScriptで動的に追加 -->
                     </select>
                 </div>
             </div>
             <div class="form-buttons">
-                <button class="button" type="submit">検索</button>
+                <button class="button" type="submit"> 検索 </button>
             </div>
         </form>
     </div>
@@ -76,7 +60,7 @@
     </div>
 
     <div class="footer">
-        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
+        <button class="button" type="button" onclick="window.location.href='/'"> トップページへ戻る </button>
     </div>
 </body>
 </html>

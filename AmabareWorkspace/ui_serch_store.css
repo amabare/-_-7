@@ -4,7 +4,7 @@
     動作や役割: 店舗を検索する画面のスタイルを定義するCSSファイル
     コメント: なし
 */
-
+/* ボディのスタイル */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-
+/* ヘッダーのスタイル */
 header {
     background-color: #29a5e2; /* 背景色を緑に設定 */
     color: white; /* テキスト色を白に設定 */
@@ -31,7 +31,7 @@ nav {
     gap: 50px; /* リンク間にスペースを追加 */
     padding: 20px; /* ナビゲーションバーの内部余白を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a {
     display: block; /* リンクをブロックレベル要素として設定 */
     color: black; /* テキスト色を白に設定 */
@@ -42,11 +42,11 @@ nav a {
     border-radius: 4px; /* 角を丸くする */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
 }
-
+/* ナビゲーションバーのスタイル */
 nav a:hover {
     background-color: #575757; /* ホバー時の背景色を濃い緑に変更 */
 }
-
+/* コンテナのスタイル */
 .form-container {
     max-width: 800px; /* 最大幅を設定 */
     padding: 20px; /* フォーム内部の余白を設定 */
@@ -56,42 +56,42 @@ nav a:hover {
     margin: 20px auto;
     text-align: center;
 }
-
+/* コンテナのタイトルのスタイル */
 .form-container h2 {
     margin-top: 0;
     text-align: center;
 }
-
+/* フォームのスタイル */
 .form-group {
     display: flex;
     justify-content: space-between; /* フォームアイテムを横並びに配置 */
     gap: 50px; /* フォームアイテム間のスペースを設定 */
     margin-bottom: 20px;
 }
-
+/* フォームのアイテムのスタイル */
 .form-item {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
-
+/* フォームのアイテムのラベルのスタイル */
 .form-item label {
     margin-bottom: 5px;
 }
-
+/* フォームのスタイル */
 .form-item input, .form-item select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
 }
-
+/* ボタンのスタイル */
 .form-buttons {
     display: flex;
     justify-content: center; /* ボタンを中央揃えに設定 */
     gap: 10px; /* ボタン間のスペースを設定 */
 }
-
+/* ボタンのスタイル */
 .button {
     background-color: #29a5e2; /* ボタンの背景色を変更 */
     padding: 10px 20px;
@@ -102,11 +102,11 @@ nav a:hover {
     font-weight: bold; /* ボタンの文字を太く設定 */
     color: white;
 }
-
+/* ボタンのスタイル */
 .button:hover {
     background-color: #29a4e2a8;
 }
-
+/* コンテナのスタイル */
 .results-container {
     margin: 20px auto;
     max-width: 800px;
@@ -115,7 +115,7 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+/* フッターのスタイル */
 .footer {
     margin-top: auto;
     padding: 20px;

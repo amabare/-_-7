@@ -1,8 +1,9 @@
 <!--
 作成者: 山本
-修正日時: 2025/01/05 12:58
+修正日時: 2025/01/14 23:03
 動作や役割: 店舗の情報を表示する画面
-コメント: 修正点は「表示言語を日本語にした」と「コードの作成情報の記述」
+コメント: タグとタグの間にスペースを入れた
+　　　　  JavaScriptのコードを外部ファイルに移動
 -->
 
 <!DOCTYPE html>
@@ -10,59 +11,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>店舗情報</title>
+    <title> 店舗情報 </title>
     <link rel="stylesheet" href="ui_store_information.css">
-    <script>
-        // URLパラメータから店舗IDを取得する関数
-        function getStoreIdFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('storeId');
-        }
-
-        // 店舗情報を表示する関数
-        function displayStoreInformation(store) {
-            const storeInfo = document.getElementById('store-info');
-            storeInfo.innerHTML = `
-                <h3>${store.name}</h3>
-                <p>営業時間: ${store.hours}</p>
-                <p>評価: ${store.rating}</p>
-                <p>空席情報: ${store.availability}</p>
-                <p>住所: ${store.address}</p>
-            `;
-        }
-
-        // サーバーから店舗情報を取得して表示する
-        window.onload = function() {
-            const storeId = getStoreIdFromUrl();
-            if (storeId) {
-                fetch(`/getStoreInformation?storeId=${storeId}`)
-                    .then(response => response.json())
-                    .then(data => displayStoreInformation(data))
-                    .catch(error => console.error('Error:', error));
-            } else {
-                console.error('店舗IDが指定されていません');
-            }
-        };
-    </script>
+    <script src="ui_store_information.js"></script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="/">検索　🔍</a>
-            <a href="/about">マイページ</a>
-            <a href="/contact">ログアウト</a>
+            <a href="/"> 検索　🔍 </a>
+            <a href="/about"> マイページ </a>
+            <a href="/contact"> ログアウト </a>
         </nav>
     </header>
 
     <div class="results-container">
-        <h2>店舗情報</h2>
+        <h2> 店舗情報 </h2>
         <div id="store-info">
             <!-- ここに選ばれた店舗の情報が表示されます -->
         </div>
     </div>
 
     <div class="footer">
-        <button class="button" type="button" onclick="window.location.href='/'">トップページへ戻る</button>
+        <button class="button" type="button" onclick="window.location.href='/'"> トップページへ戻る </button>
     </div>
 </body>
 </html>
