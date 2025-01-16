@@ -57,7 +57,7 @@ public  class NewReservation {
         //予約情報のテーブル
         String table_name  = "RESERVATION";
         //String instruction = reserver + "," + date_and_time + "," + number_of_people ;
-        // DataBaseUtilityクラスのdeleteDBメソッドを呼び出す
+        // DataBaseUtilityクラスのinsertDBメソッドを呼び出す
         //int rowsInserted = DatabaseUtility.insertDB(tableName, values);  // insertDBメソッドの呼び出し
         //return rowsInserted;  // 挿入した行数を返す
         //test
