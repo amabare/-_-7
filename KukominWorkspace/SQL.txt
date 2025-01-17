@@ -1,0 +1,83 @@
+ユーザテーブル
+CREATE TABLE USER (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,         -- ユーザーID (一意の識別子)
+    name VARCHAR(100) NOT NULL,                -- 名前
+    email VARCHAR(255) NOT NULL UNIQUE,        -- メールアドレス (一意)
+    phone_number VARCHAR(15) UNIQUE,           -- 電話番号 (一意)
+    gender VARCHAR(255),                       -- 性別
+    password_hash VARCHAR(255),                -- パスワード (ハッシュ化を前提)
+    membership_status ENUM('REGULAR', 'VIP') DEFAULT 'REGULAR', -- 会員ステータス
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 登録日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新日時
+    is_deleted BOOLEAN DEFAULT FALSE           -- 削除フラグ (論理削除用)
+);
+
+店舗情報テーブル
+CREATE TABLE STORE (
+    store_id INT AUTO_INCREMENT PRIMARY KEY,         -- 店舗ID (一意の識別子)
+    name VARCHAR(100) NOT NULL,                -- 店舗名
+    address VARCHAR(255),                      -- 住所
+    phone_number VARCHAR(15),                  -- 電話番号
+    opening_hours VARCHAR(100),                -- 営業時間 (例: "10:00-22:00")
+    closing_days VARCHAR(50),                  -- 定休日 (例: "Monday")
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 更新日時
+);
+
+複合主キーを用いた席情報テーブル
+CREATE TABLE SEAT (
+    seat_id INT NOT NULL,                      -- 座席ID (店舗内での座席番号)
+    store_id INT NOT NULL,                     -- 店舗ID (外部キー)
+    seat_name VARCHAR(100),                    -- 座席名
+    capacity INT NOT NULL,                     -- 収容人数
+    seat_status ENUM('使用中', '予約', '空席') DEFAULT '空席', -- 座席の状態
+    reserve_id INT,                            -- 予約ID (外部キー)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新日時
+    PRIMARY KEY (store_id, seat_id),           -- 複合主キー
+    CONSTRAINT fk_store FOREIGN KEY (store_id) REFERENCES STORE(store_id) ON DELETE CASCADE, -- 外部キー (店舗)
+    CONSTRAINT fk_reserve FOREIGN KEY (reserve_id) REFERENCES RESERVATION(reservation_id) ON DELETE SET NULL -- 外部キー (予約)
+);
+
+単独主キーの席情報テーブル
+CREATE TABLE SEAT (
+    seat_id INT AUTO_INCREMENT PRIMARY KEY,    -- 座席ID (全体で一意)
+    store_id INT NOT NULL,                     -- 店舗ID (外部キー)
+    seat_name VARCHAR(100),                    -- 座席名
+    capacity INT NOT NULL,                     -- 収容人数
+    seat_status ENUM('使用中', '予約', '空席') DEFAULT '空席', -- 座席の状態
+    reserve_id INT,                            -- 予約ID (外部キー)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新日時
+    CONSTRAINT fk_store FOREIGN KEY (store_id) REFERENCES STORE(store_id) ON DELETE CASCADE, -- 外部キー (店舗)
+    CONSTRAINT fk_reserve FOREIGN KEY (reserve_id) REFERENCES RESERVATION(reservation_id) ON DELETE SET NULL -- 外部キー (予約)
+);
+
+CREATE TABLE SEAT (
+    seat_id INT AUTO_INCREMENT PRIMARY KEY,    -- 座席ID (全体で一意)
+    store_id INT NOT NULL,                     -- 店舗ID (外部キー)
+    seat_name VARCHAR(100),                    -- 座席名
+    capacity INT NOT NULL,                     -- 収容人数
+    seat_status ENUM('使用中', '予約', '空席') DEFAULT '空席', -- 座席の状態
+    reserve_id INT,                            -- 予約ID (外部キー)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新日時
+    CONSTRAINT fk_seat_store FOREIGN KEY (store_id) REFERENCES STORE(store_id) ON DELETE CASCADE, -- 外部キー (店舗)
+    CONSTRAINT fk_seat_reserve FOREIGN KEY (reserve_id) REFERENCES RESERVATION(reservation_id) ON DELETE SET NULL -- 外部キー (予約)
+);
+
+
+予約情報テーブル
+CREATE TABLE RESERVATION (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY, -- 予約ID (自動インクリメント)
+    store_id INT NOT NULL,                         -- 店舗ID (外部キー)
+    customer_name VARCHAR(100) NOT NULL,           -- 予約者名
+    customer_phone VARCHAR(15),                    -- 予約者電話番号
+    reservation_time DATETIME NOT NULL,            -- 予約日時
+    num_guests INT NOT NULL,                       -- 予約人数
+    status ENUM('CONFIRMED', 'CANCELED', 'PENDING') DEFAULT 'PENDING', -- 予約状態
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 更新日時
+    CONSTRAINT fk_store FOREIGN KEY (store_id) REFERENCES STORE(store_id) ON DELETE CASCADE -- 外部キー (店舗)
+);
+

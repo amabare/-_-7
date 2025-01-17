@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>予約登録確認画面</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui/styles.css">
 </head>
 <body>
     <!-- ナビゲーションバー -->
@@ -24,17 +24,16 @@
     <!-- メインコンテンツエリア -->
     <main>
         <div class="form-container">
-            <div id="reservation-id">予約ID: ${restaurantId}</div>
+            <div id="reservation-id">店舗ID: ${store_id}</div>
             <div id="reserver">予約者名: ${customer_name}</div>
-            <div id="date-output">予約日: ${reservation_date} 予約時間: ${reservation_time}</div>
-            <div id="reserver_num">予約人数: ${party_size}</div>
+            <div id="date-output">予約日時: ${reservation_time}</div>
+            <div id="reserver_num">予約人数: ${num_guests}</div>
 
             <form action="/insert_reserve" method="post">
-                <input type="hidden" name="id" value="${restaurantId}"> <!-- 予約時の店舗ID -->
+                <input type="hidden" name="store_id" value="${store_id}">
                 <input type="hidden" name="customer_name" value="${customer_name}">
-                <input type="hidden" name="reservation_date" value="${reservation_date}">
                 <input type="hidden" name="reservation_time" value="${reservation_time}">
-                <input type="hidden" name="party_size" value="${party_size}">
+                <input type="hidden" name="num_guests" value="${num_guests}">
 
                 <h2>上記の内容でよろしいですか?</h2>
                 <div class="button-group">

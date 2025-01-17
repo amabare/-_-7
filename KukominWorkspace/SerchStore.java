@@ -12,18 +12,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 // "/searchStore"エンドポイントに対応するサーブレット
 @WebServlet("/searchStore")
 public class SearchStoreServlet extends HttpServlet {
 
     // データベース接続情報
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/restaurant_db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/my_database";
     private static final String DB_USER = "root"; // データベースのユーザー名
     private static final String DB_PASSWORD = "password"; // データベースのパスワード
 

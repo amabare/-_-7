@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.*;
+import java.util.*;  // List, Map, HashMap をインポート
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,72 +22,54 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/insert_reserve")
 public class Insert_Reserve extends HttpServlet {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/my_database";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root00";
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         // フォームデータを取得
-        String restaurantIdStr = request.getParameter("id");
+        String storeIdStr = request.getParameter("store_id");
         String customerName = request.getParameter("customer_name");
-        String reservationDate = request.getParameter("reservation_date");
-        String reservationTime = request.getParameter("reservation_time");
-        String partySizeStr = request.getParameter("party_size");
+        String customerPhone = request.getParameter("customer_phone");
+        String reservationTimeStr = request.getParameter("reservation_time");
+        String numGuestsStr = request.getParameter("num_guests");
 
         // 必要なパラメータが不足している場合のエラーチェック
-        if (restaurantIdStr == null || customerName == null || reservationDate == null ||
-            reservationTime == null || partySizeStr == null) {
+        if (storeIdStr == null || customerName == null || reservationTimeStr == null || numGuestsStr == null) {
             throw new IllegalArgumentException("必要なパラメータが不足しています");
         }
 
-        int restaurantId = Integer.parseInt(restaurantIdStr);
-        int partySize = Integer.parseInt(partySizeStr);
+        int storeId = Integer.parseInt(storeIdStr);
+        int numGuests = Integer.parseInt(numGuestsStr);
 
         // データベース接続と重複チェック
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+        try {
             // 重複チェックのSQLクエリ
-            String checkSql = "SELECT COUNT(*) FROM reservations WHERE id = ? AND reservation_date = ? AND reservation_time = ?";
-            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
-                checkStmt.setInt(1, restaurantId);
-                checkStmt.setString(2, reservationDate);
-                checkStmt.setString(3, reservationTime);
+            String checkSql = "store_id = ? AND reservation_time = ?";
+            Object[] checkParams = { storeId, reservationTimeStr };
+            List<Map<String, Object>> existingReservations = DatabaseUtility.select("RESERVATION", checkSql, checkParams);
 
-                // 予約がすでに存在するかチェック
-                int count = 0;
-                try (ResultSet rs = checkStmt.executeQuery()) {
-                    if (rs.next()) {
-                        count = rs.getInt(1);
-                    }
-                }
+            if (existingReservations != null && !existingReservations.isEmpty()) {
+                // すでに予約が存在する場合
+                out.println("<p>この日時にはすでに予約があります。別の時間を選択してください。</p>");
+            } else {
+                // 重複がない場合、予約情報をINSERT
+                Map<String, Object> reservationData = new HashMap<>();
+                reservationData.put("store_id", storeId);
+                reservationData.put("customer_name", customerName);
+                reservationData.put("customer_phone", customerPhone);
+                reservationData.put("reservation_time", reservationTimeStr);
+                reservationData.put("num_guests", numGuests);
+                reservationData.put("status", "PENDING");
 
-                if (count > 0) {
-                    // すでに予約が存在する場合
-                    out.println("<p>この日時にはすでに予約があります。別の時間を選択してください。</p>");
+                int rowsInserted = DatabaseUtility.insert("RESERVATION", reservationData);
+                if (rowsInserted > 0) {
+                    // 予約が正常に登録された場合
+                    out.println("<p>予約が正常に登録されました！</p>");
                 } else {
-                    // 重複がない場合、予約情報をINSERT
-                    String insertSql = "INSERT INTO reservations (id, customer_name, reservation_date, reservation_time, party_size) "
-                                     + "VALUES (?, ?, ?, ?, ?)";
-                    try (PreparedStatement stmt = conn.prepareStatement(insertSql)) {
-                        stmt.setInt(1, restaurantId);
-                        stmt.setString(2, customerName);
-                        stmt.setString(3, reservationDate);
-                        stmt.setString(4, reservationTime);
-                        stmt.setInt(5, partySize);
-
-                        int rowsInserted = stmt.executeUpdate();
-                        if (rowsInserted > 0) {
-                            // 予約が正常に登録された場合
-                            out.println("<p>予約が正常に登録されました！</p>");
-                        } else {
-                            out.println("<p>予約の登録に失敗しました。</p>");
-                        }
-                    }
+                    out.println("<p>予約の登録に失敗しました。</p>");
                 }
             }
         } catch (Exception e) {

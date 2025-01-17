@@ -10,7 +10,7 @@ import java.util.*;
 // reservation_system
 
 public class DatabaseUtility {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/reservation_system";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/my_database";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "root00";
 

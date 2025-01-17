@@ -28,35 +28,33 @@ public class ReserveStore extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String restaurantIdStr = request.getParameter("id");
+        String storeIdStr = request.getParameter("store_id");
         String customerName = request.getParameter("customer_name");
-        String reservationDate = request.getParameter("reservation_date");
         String reservationTime = request.getParameter("reservation_time");
-        String partySizeStr = request.getParameter("party_size");
+        String numGuestsStr = request.getParameter("num_guests");
 
         // 文字エンコードの設定
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
         // 必要なパラメータが不足している場合のエラーチェック
-        if (restaurantIdStr == null || customerName == null || reservationDate == null ||
-            reservationTime == null || partySizeStr == null) {
+        if (storeIdStr == null || customerName == null || 
+            reservationTime == null || numGuestsStr == null) {
             throw new IllegalArgumentException("必要なパラメータが不足しています");
         }
 
-        int restaurantId = Integer.parseInt(restaurantIdStr);
-        int partySize = Integer.parseInt(partySizeStr);
+        int storeId = Integer.parseInt(storeIdStr);
+        int numGuests = Integer.parseInt(numGuestsStr);
 
         // リクエストスコープに値を設定
-        request.setAttribute("restaurantId", restaurantId);
+        request.setAttribute("store_id", storeId);
         request.setAttribute("customer_name", customerName);
-        request.setAttribute("reservation_date", reservationDate);
         request.setAttribute("reservation_time", reservationTime);
-        request.setAttribute("party_size", partySize);
+        request.setAttribute("num_guests", numGuests);
 
         // 予約登録処理（省略）
 
         // JSPに転送
-        request.getRequestDispatcher("/reserveConfirmation.jsp").forward(request, response);
+        request.getRequestDispatcher("/ui/reserveConfirmation.jsp").forward(request, response);
     }
 }

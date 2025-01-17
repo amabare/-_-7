@@ -3,71 +3,70 @@
 修正日時: 2025/01/013
 ソースコードの動作や役割: 店側予約のui(driver)
  -->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>予約フォーム</title>
-    <script>
-        // 入力内容をバリデーションするJavaScript
-        function validateForm() {
-            var name = document.getElementById("customer_name").value;
-            var reservationDate = document.getElementById("reservation_date").value;
-            var reservationTime = document.getElementById("reservation_time").value;
-            var partySize = document.getElementById("party_size").value;
-
-            // 名前が空でないか確認
-            if (name.trim() === "") {
-                alert("お名前を入力してください");
-                return false;
-            }
-
-            // 人数が1人以上か確認
-            if (partySize <= 0) {
-                alert("人数は1人以上でなければなりません");
-                return false;
-            }
-
-            // SQLインジェクション対策として、無効な文字列（OR 1=1 など）をチェック
-            var invalidChars = /[<>;()'`"|&]/;
-            var sqlInjectionPattern = /\b(OR|AND|SELECT|INSERT|DELETE|UPDATE|DROP|UNION)\b/i; // OR 1=1 などのパターン
-
-            if (invalidChars.test(name) || invalidChars.test(reservationDate) || invalidChars.test(reservationTime)) {
-                alert("無効な文字が含まれています");
-                return false;
-            }
-
-            if (sqlInjectionPattern.test(name) || sqlInjectionPattern.test(reservationDate) || sqlInjectionPattern.test(reservationTime)) {
-                alert("SQLインジェクションの可能性がある文字列が含まれています");
-                return false;
-            }
-
-            return true;
-        }
-    </script>
-</head>
-<body>
-    <h2>予約フォーム</h2>
-    <form action="/reserve" method="post" onsubmit="return validateForm()">
-        <input type="hidden" name="id" value="1"> <!-- URLから取得したrestaurant_idをセット -->
-        <div>
-            <label for="customer_name">お名前:</label>
-            <input type="text" id="customer_name" name="customer_name" required>
-        </div>
-        <div>
-            <label for="reservation_date">予約日:</label>
-            <input type="date" id="reservation_date" name="reservation_date" required>
-        </div>
-        <div>
-            <label for="reservation_time">予約時間:</label>
-            <input type="time" id="reservation_time" name="reservation_time" step="3600" required>
-        </div>
-        <div>
-            <label for="party_size">人数:</label>
-            <input type="number" id="party_size" name="party_size" min="1" required>
-        </div>
-        <button type="submit">予約</button>
-    </form>
-</body>
-</html>
+ <!DOCTYPE html>
+ <html lang="ja">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>予約フォーム</title>
+     <script>
+         // 入力内容をバリデーションするJavaScript
+         function validateForm() {
+             var name = document.getElementById("customer_name").value;
+             var reservationDate = document.getElementById("reservation_time").value; // 修正: reservation_dateとtimeを統合
+             var partySize = document.getElementById("num_guests").value;
+ 
+             // 名前が空でないか確認
+             if (name.trim() === "") {
+                 alert("お名前を入力してください");
+                 return false;
+             }
+ 
+             // 人数が1人以上か確認
+             if (partySize <= 0) {
+                 alert("人数は1人以上でなければなりません");
+                 return false;
+             }
+ 
+             // SQLインジェクション対策として、無効な文字列（OR 1=1 など）をチェック
+             var invalidChars = /[<>;()'`"|&]/;
+             var sqlInjectionPattern = /\b(OR|AND|SELECT|INSERT|DELETE|UPDATE|DROP|UNION)\b/i; // OR 1=1 などのパターン
+ 
+             if (invalidChars.test(name) || invalidChars.test(reservationDate)) {
+                 alert("無効な文字が含まれています");
+                 return false;
+             }
+ 
+             if (sqlInjectionPattern.test(name) || sqlInjectionPattern.test(reservationDate)) {
+                 alert("SQLインジェクションの可能性がある文字列が含まれています");
+                 return false;
+             }
+ 
+             return true;
+         }
+     </script>
+ </head>
+ <body>
+     <h2>予約フォーム</h2>
+     <form action="/reserve" method="post" onsubmit="return validateForm()">
+         <input type="hidden" name="store_id" value="1"> <!-- 修正: resutaurant_id を store_id に変更 -->
+         <div>
+             <label for="customer_name">お名前:</label>
+             <input type="text" id="customer_name" name="customer_name" required>
+         </div>
+         <div>
+             <label for="reservation_time">予約日時:</label>
+             <!-- 修正: 日付と時刻を統合 -->
+             <input type="datetime-local" id="reservation_time" name="reservation_time" step="3600" required>
+         </div>
+         <div>
+             <label for="num_guests">人数:</label>
+             <!-- 修正: party_size を num_guests に変更 -->
+             <input type="number" id="num_guests" name="num_guests" min="1" required>
+         </div>
+         <button type="submit">予約</button>
+     </form>
+ </body>
+ </html>
+ 
+ 
