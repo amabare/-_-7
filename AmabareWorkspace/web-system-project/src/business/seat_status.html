@@ -1,8 +1,8 @@
 <!--
 ソースコード作成者: 山本
-修正日時: 2025/01/07 10:10
+修正日時: 2025/01/17 11:35
 ソースコードの動作や役割: 座席状況画面
-コメント: それぞれのコードの仕事をコメントアウト
+コメント: 「今日の」充填率を表示することに成功した
 -->
 
 <!DOCTYPE html>
@@ -13,6 +13,15 @@
     <title>座席状況</title>
     <link rel="stylesheet" href="../styles/main.css">
     <script>
+        // 今日の日付を取得する関数
+        function getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = ('0' + (today.getMonth() + 1)).slice(-2); // 月は0から始まるので +1
+            const day = ('0' + today.getDate()).slice(-2);
+            return `${year}-${month}-${day}`; // "YYYY-MM-DD" 形式で返す
+        }
+
         // 座席状況を読み込む関数
         function loadSeatStatus() {
             const seats = JSON.parse(localStorage.getItem('seats')) || [];
@@ -22,9 +31,15 @@
 
             let totalSeats = 0;
             let usedSeats = 0;
+            const todayDate = getTodayDate(); // 今日の日付を取得
 
             seats.forEach(seat => {
-                const seatReservations = reservations.filter(reservation => reservation.seat === seat.number && reservation.arrived);
+                // 今日の日付に一致する予約のみをフィルタリング
+                const seatReservations = reservations.filter(reservation => 
+                    reservation.seat === seat.number && 
+                    reservation.arrived && 
+                    reservation.date.split('T')[0] === todayDate); // 日付を比較
+                    
                 const seatUsage = seatReservations.reduce((total, reservation) => total + parseInt(reservation.people), 0);
                 totalSeats += parseInt(seat.count);
                 usedSeats += seatUsage;
