@@ -1,3 +1,15 @@
+トップページはまだ
+ログイン機能はセッション情報の設定以外できた
+ログアウト機能はリダイレクト先以外はできた
+店舗登録機能はDBのInsert以外できた
+席情報登録機能はできた
+席情報更新機能はできた(store_idは要設定)
+席情報削除はまだ
+店舗検索自体はできるがURLの付与(storeidの付与も)などできない
+ユーザ側の予約登録はできる(store_idは仮置き)
+
+
+
 sudo javac -cp /opt/tomcat/lib/servlet-api.jar:. LoginServlet.java
 sudo cp LoginServlet.classes WEB-INF/classes
 

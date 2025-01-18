@@ -97,14 +97,39 @@ public class DatabaseUtility {
         return statement.executeUpdate();
     }
     
-    public static int delete(String tableName, String whereClause) throws Exception {
-        String query = "DELETE FROM " + tableName + " WHERE " + whereClause;
-    
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-        PreparedStatement statement = connection.prepareStatement(query);
-    
-        return statement.executeUpdate();
+ public static int delete(String tableName, String whereClause, Object[] parameters) throws Exception {
+    // クエリ作成
+    String query = "DELETE FROM " + tableName + " WHERE " + whereClause;
+
+    // クエリのデバッグ情報を出力
+    System.out.println("Executing query: " + query);
+
+    try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(query)) {
+
+        // パラメータを設定
+        if (parameters != null) {
+            for (int i = 0; i < parameters.length; i++) {
+                System.out.println("Setting parameter " + (i + 1) + ": " + parameters[i]);
+                statement.setObject(i + 1, parameters[i]);
+            }
+        } else {
+            System.out.println("No parameters to set.");
+        }
+
+        // クエリ実行
+        int rowsAffected = statement.executeUpdate();
+        System.out.println("Rows deleted: " + rowsAffected);
+        return rowsAffected;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw new Exception("Failed to execute delete query: " + e.getMessage());
+    }
 }
+
+
+
 
 }
 

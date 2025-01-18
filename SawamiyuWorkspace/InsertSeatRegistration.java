@@ -29,6 +29,7 @@ public class InsertSeatRegistration extends HttpServlet {
         // 必要なパラメータが不足している場合のエラーチェック
         if (seatName == null || capacityStr == null || storeIdStr == null) {
             out.println("<p>必要なパラメータが不足しています。</p>");
+            out.println("<button onclick=\"window.location.href='/seat_list'\">座席一覧に戻る</button>");
             return;
         }
 
@@ -41,6 +42,7 @@ public class InsertSeatRegistration extends HttpServlet {
             storeId = Integer.parseInt(storeIdStr);
         } catch (NumberFormatException e) {
             out.println("<p>収容人数または店舗IDが無効です。</p>");
+            out.println("<button onclick=\"window.location.href='/seat_list'\">座席一覧に戻る</button>");
             return;
         }
 
@@ -88,5 +90,8 @@ public class InsertSeatRegistration extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
+        // 共通のボタンで遷移
+        out.println("<button onclick=\"window.location.href='/seat_list'\">座席一覧に戻る</button>");
     }
 }
