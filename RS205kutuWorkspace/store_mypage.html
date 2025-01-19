@@ -1,13 +1,12 @@
-<!-- 一般ユーザマイページ 作成者:佐々木 修正日時12/24 -->
+<!-- 事業者マイページ 作成者:佐々木 修正日時12/24 -->
 <!-- 
-会員情報確認・会員情報変更・パスワード変更・退会画面への遷移のあるボタン、登録名に加え、
-一般ユーザには予約一覧とその予約に対する予約削除確認画面への遷移のあるボタンを表示する  
+会員情報確認・会員情報変更・パスワード変更・退会画面への遷移のあるボタン、登録名を表示
 -->
 
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
-        <title> 一般ユーザマイページ </title>
+        <title> 事業者マイページ </title>
         <meta charset="UTF-8">
         <link rel = "stylesheet" href = "user_mypage.css">
     </head>
@@ -15,13 +14,13 @@
         <!-- user_header.htmlを挿入 -->
         <div id="headhoot"> </div>
         <script>
-            fetch('user_head_hoot.html')
+            fetch('store_head_hoot.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('headhoot').innerHTML = data;
             }); 
         </script>
-        <h2> マイページ <span id = "user_name"> <!-- ここに一般ユーザ名を挿入 --> </span> </h2>
+        <h2> マイページ <span id = "store_name"> <!-- ここに事業者名を挿入 --> </span> </h2>
         <h2> 予約一覧 </h2>
         <!-- マイページのボタン -->
         <div class = "line_up">
@@ -36,14 +35,11 @@
                 <td> <a href="#" id = "button"> パスワード変更 </a> </td>
             </tr>
             <tr>
-                <td> <a href="user_cancel_account_check.html" id = "button"> 退会 </a> </td>
+                <td> <a href="store_cancel_account_check.html" id = "button"> 退会 </a> </td>
             </tr>
         </table>
-        <div id = "reserves">
-            <!-- ここに予約一覧が表示されます -->
-        </div>
     </div>
     <br>
-        <center> <a id = "submit" href = "user_rogin_toppage.html"> トップページへ戻る </a> </center>
+        <center> <a id = "submit" href = "store_rogin_toppage.html"> トップページへ戻る </a> </center>
     </body>
 </html>

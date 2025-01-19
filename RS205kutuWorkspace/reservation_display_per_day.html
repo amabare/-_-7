@@ -1,0 +1,27 @@
+<!-- 日時別予約情報表示画面 作成者:佐々木 修正日時1/19 -->
+<!-- 
+席管理画面にてクリックされた日時の予約状況を席・時間帯ごとに表示し、
+予約のある場所にカーソルを置くとその予約の情報(予約者名、人数)が表示される
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 日時別予約情報表示画面 </title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "reservation_display_per_day.css">
+    </head>
+    <body>
+        <div id="headhoot"> </div>
+        <script>
+            fetch('store_head_hoot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headhoot').innerHTML = data;
+            }); 
+        </script>
+        <div id = "timelines"> <!-- ここに各座席・日時別の予約情報が表示 --> </div>
+        <br>
+        <a id = "submit" href = "stab_UI.html"> 戻る </a>
+    </body>
+</html>

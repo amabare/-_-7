@@ -1,4 +1,4 @@
-/* 一般ユーザマイページのCSS 作成者:佐々木 修正日時:1/19 */
+/* 事業者マイページのCSS 作成者:佐々木 修正日時:1/19 */
 
 .line_up{
     display: flex;
@@ -25,7 +25,7 @@ h2{
     padding-right: 30px; /* 四角形との間隔 */
 }
 
-#user_name{
+#store_name{
     position: absolute;
     right: 20px; /* 右端に配置 */
     top: 0; /* 上端に配置 */
