@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>席割り振り</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="#">予約管理</a>
+    <a href="#">マイページ</a>
+    <a href="#">ログアウト</a>
+  </nav>
+  <div class="header">
+    <h1>席の割り振り</h1>
+  </div>
+
+  <div id="assignment-container"></div>
+
+  <script>
+    // データを取得して割り振り情報をレンダリング
+    async function fetchAndRenderReservations() {
+      const container = document.getElementById("assignment-container");
+      try {
+        const response = await fetch("/get_reservations");
+        const reservations = await response.json();
+
+        reservations.forEach((reservation, index) => {
+          const itemHTML = `
+            <div class="item">
+              <div class="item-header">
+                <div>氏名: ${reservation.customer_name} (${reservation.num_guests}名)</div>
+                <div>${reservation.reservation_time}</div>
+              </div>
+              <div class="options">
+                <label>
+                  <input type="radio" name="assignment-${index}" value="not_assigned"> 割り振らない
+                </label>
+                <label>
+                  <input type="radio" name="assignment-${index}" value="assigned"> 割り振る
+                </label>
+                <select>
+                  <option value="">座席を選択してください</option>
+                  <option value="${reservation.seat_name}">${reservation.seat_name}</option>
+                </select>
+              </div>
+            </div>
+          `;
+          container.innerHTML += itemHTML;
+        });
+      } catch (error) {
+        console.error("データ取得エラー:", error);
+        container.innerHTML = "<p>データを取得できませんでした。</p>";
+      }
+    }
+
+    // ページロード時に実行
+    fetchAndRenderReservations();
+  </script>
+</body>
+</html>

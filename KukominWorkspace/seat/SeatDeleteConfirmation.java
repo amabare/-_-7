@@ -1,41 +1,3 @@
-// import java.io.IOException;
-// import jakarta.servlet.ServletException;
-// import jakarta.servlet.annotation.WebServlet;
-// import jakarta.servlet.http.HttpServlet;
-// import jakarta.servlet.http.HttpServletRequest;
-// import jakarta.servlet.http.HttpServletResponse;
-
-// @WebServlet("/delete_seat_confirmation")
-// public class SeatDeleteConfirmation extends HttpServlet {
-
-//     @Override
-//     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//             throws ServletException, IOException {
-
-//         response.setContentType("text/html; charset=UTF-8");
-
-//         // パラメータから seat_id を取得
-//         String seatId = request.getParameter("seat_id");
-
-//         // 必須パラメータがない場合のエラーハンドリング
-//         if (seatId == null || seatId.isEmpty()) {
-//             response.getWriter().println("<p>席IDが指定されていません。</p>");
-//             return;
-//         }
-
-//         // seat_id をリクエストスコープに設定
-//         request.setAttribute("seat_id", seatId);
-
-//         // 削除確認ページを表示
-//         try {
-//             request.getRequestDispatcher("/ui/delete_confirmation.html").forward(request, response);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             response.getWriter().println("<p>削除確認ページの表示に失敗しました。</p>");
-//         }
-//     }
-// }
-
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -84,7 +46,7 @@ public class SeatDeleteConfirmation extends HttpServlet {
             out.println("<p>削除確認ページを表示します。</p>");
             out.println("</body></html>");
             // 削除確認ページにフォワード（ここではデバッグ情報のみ表示してフォワードは不要かも）
-             request.getRequestDispatcher("ui/seat_delete_confirmation.html").forward(request, response);
+             request.getRequestDispatcher("ui/seat_delete_confirmation.jsp").forward(request, response);
         } catch (Exception e) {
             out.println("<p>削除確認ページの表示に失敗しました。</p>");
             out.println("<pre>" + e.getMessage() + "</pre>");

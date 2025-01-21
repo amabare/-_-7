@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,16 +9,17 @@
 </head>
 <body>
     <nav>
-        <a href="#">予約管理</a>
-        <a href="#">マイページ</a>
-        <a href="#">ログアウト</a>
+        <a href="reservation_management">予約管理</a>
+        <a href="/ui/mypage.html">マイページ</a>
+        <a href="/logout">ログアウト</a>
     </nav>
 
     <main>
         <div class="form-container">
             <form action="/seat_change" method="post" id="register-form">
                 <input type="hidden" id="store_id" name="store_id" value="1">
-                <input type="hidden" id="seat_id" name="seat_id" value="1"> <!-- この部分が動的に変更されます -->
+                <input type="hidden" id="seat_id" name="seat_id" value=""> <!-- 初期値は空 -->
+
                 <div class="form-item">
                     <label for="seat_name">席名を入力してください</label>
                     <input type="text" id="seat_name" name="seat_name" required>
@@ -33,5 +35,17 @@
             <button class="fixed-submit-button" type="submit" form="register-form">登録する</button>
         </div>
     </main>
+
+    <script>
+        // URLからseat_idを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const seatId = urlParams.get('seat_id');
+        
+        // seat_idをフォームにセット
+        if (seatId) {
+            document.getElementById('seat_id').value = seatId;
+        }
+    </script>
 </body>
 </html>
+

@@ -56,7 +56,7 @@ public class InsertStoreRegistration extends HttpServlet {
         // データベース接続と登録処理
         try {
             // 重複チェックのSQLクエリ
-            String checkSql = "store_name = ? AND store_address = ?";
+            String checkSql = "name = ? AND address = ?";
             Object[] checkParams = { storeName, storeAddress };
             List<Map<String, Object>> existingStores = DatabaseUtility.select("STORE", checkSql, checkParams);
 
@@ -66,8 +66,8 @@ public class InsertStoreRegistration extends HttpServlet {
             } else {
                 // 重複がない場合、店舗情報をINSERT
                 Map<String, Object> storeData = new HashMap<>();
-                storeData.put("store_name", storeName);
-                storeData.put("store_address", storeAddress);
+                storeData.put("name", storeName); // カラム名を修正
+                storeData.put("address", storeAddress);
                 storeData.put("store_mail", storeMail);
                 storeData.put("store_phone", storePhone);
                 storeData.put("payment_method", paymentMethod);

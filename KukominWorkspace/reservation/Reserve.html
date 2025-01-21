@@ -49,7 +49,7 @@
  <body>
      <h2>予約フォーム</h2>
      <form action="/reserve" method="post" onsubmit="return validateForm()">
-         <input type="hidden" name="store_id" value="1"> <!-- 修正: resutaurant_id を store_id に変更 -->
+         <input type="hidden" name="store_id" value="1"> <!-- store_id に変更 URLからとってきたいseat_changeのように-->
          <div>
              <label for="customer_name">お名前:</label>
              <input type="text" id="customer_name" name="customer_name" required>
