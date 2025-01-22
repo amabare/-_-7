@@ -7,6 +7,7 @@
 席情報削除できた                                               seatlist>seat_delete.jsp>seat_delete_conf>delete_seat
 店舗検索自体はできるがURLの付与(storeidの付与も)などできない
 ユーザ側の予約登録はできる(store_idは仮置き)
+みゆうの会員登録以外のモジュールはでき
 
 
 

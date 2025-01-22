@@ -53,6 +53,12 @@ public class InsertStoreRegistration extends HttpServlet {
             return;
         }
 
+        // payment_methodが有効な値であるかをチェック
+        if (!"コンビニ".equals(paymentMethod) && !"クレジット".equals(paymentMethod)) {
+            out.println("<p>無効な支払い方法が選択されました。</p>");
+            return;
+        }
+
         // データベース接続と登録処理
         try {
             // 重複チェックのSQLクエリ
@@ -66,10 +72,10 @@ public class InsertStoreRegistration extends HttpServlet {
             } else {
                 // 重複がない場合、店舗情報をINSERT
                 Map<String, Object> storeData = new HashMap<>();
-                storeData.put("name", storeName); // カラム名を修正
+                storeData.put("name", storeName);
                 storeData.put("address", storeAddress);
-                storeData.put("store_mail", storeMail);
-                storeData.put("store_phone", storePhone);
+                storeData.put("email", storeMail); // DBカラムに合わせる
+                storeData.put("phone_number", storePhone); // DBカラムに合わせる
                 storeData.put("payment_method", paymentMethod);
 
                 int rowsInserted = DatabaseUtility.insert("STORE", storeData);
@@ -86,3 +92,4 @@ public class InsertStoreRegistration extends HttpServlet {
         }
     }
 }
+

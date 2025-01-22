@@ -27,9 +27,9 @@ public class SeatListServlet extends HttpServlet {
 
         try {
             // データベース接続情報
-            String url = "jdbc:mysql://localhost:3306/my_database";
-            String user = "root";
-            String password = "root00";
+            String url = "jdbc:mysql://database-1.c1w61uuuqanw.us-east-1.rds.amazonaws.com:3306/my_database";
+            String user = "admin";
+            String password = "root0000";
 
             // データベース接続
             conn = DriverManager.getConnection(url, user, password);
@@ -99,3 +99,4 @@ public class SeatListServlet extends HttpServlet {
         }
     }
 }
+

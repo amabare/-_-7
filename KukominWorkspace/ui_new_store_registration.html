@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <h2> 情報を入力してください </h2>
-        <form id="register-form" action="/store_registration" method="post">
+        <form id="register-form" action="/store_registration" method="post" onsubmit="return validateForm()">
             <!-- 店舗名入力 -->
             <div class="form-item">
                 <label for="name"> 店舗の名前 </label>
@@ -44,10 +44,10 @@
             <!-- 支払い方法選択 -->
             <div class="form-item">
                 <label for="payment-method"> 支払方法 </label>
-                <select id="payment-method" name="payment-method" required>
+                <select id="payment-method" name="payment-method" required onchange="toggleCreditCardInfo()">
                     <option value=""> 選択してください </option>
-                    <option value="convenience store"> コンビニ </option>
-                    <option value="credit-card"> クレジット </option>
+                    <option value="コンビニ"> コンビニ </option>
+                    <option value="クレジット"> クレジット </option>
                 </select>
             </div>
 
@@ -120,11 +120,31 @@
         function toggleCreditCardInfo() {
             const paymentMethod = document.getElementById('payment-method').value;
             const creditCardInfo = document.getElementById('credit-card-info');
-            if (paymentMethod === 'credit-card') {
+            if (paymentMethod === 'クレジット') {
                 creditCardInfo.style.display = 'block';
             } else {
                 creditCardInfo.style.display = 'none';
             }
+        }
+
+        // フォーム送信前のバリデーション
+        function validateForm() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            if (paymentMethod === '') {
+                alert('支払方法を選択してください');
+                return false;  // フォーム送信を中止
+            }
+            if (paymentMethod === 'クレジット') {
+                // クレジットカード情報が入力されていない場合、警告を出す
+                if (document.getElementById('card-number').value === '' ||
+                    document.getElementById('card-name').value === '' ||
+                    document.getElementById('card-expiry').value === '' ||
+                    document.getElementById('card-code').value === '') {
+                    alert('クレジットカード情報をすべて入力してください');
+                    return false;  // フォーム送信を中止
+                }
+            }
+            return true;  // フォーム送信を続行
         }
 
         // ページが読み込まれたときに年齢の選択肢を生成

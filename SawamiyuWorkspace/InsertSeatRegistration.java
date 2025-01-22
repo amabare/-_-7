@@ -1,9 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -46,31 +43,18 @@ public class InsertSeatRegistration extends HttpServlet {
             return;
         }
 
-        // データベース接続とINSERT処理
-        Connection conn = null;
-        PreparedStatement pstmt = null;
+        // データベースに挿入するための値をマップにまとめる
+        Map<String, Object> seatData = new HashMap<>();
+        seatData.put("seat_name", seatName);
+        seatData.put("capacity", capacity);
+        seatData.put("store_id", storeId);
+        seatData.put("seat_status", "空席");  // 初期状態は「空席」
+        seatData.put("created_at", new java.sql.Timestamp(System.currentTimeMillis()));
+        seatData.put("updated_at", new java.sql.Timestamp(System.currentTimeMillis()));
 
+        // DatabaseUtilityのinsertメソッドを使用してデータを挿入
         try {
-            // データベース接続情報
-            String url = "jdbc:mysql://localhost:3306/my_database";
-            String user = "root";
-            String password = "root00";
-
-            // 接続
-            conn = DriverManager.getConnection(url, user, password);
-
-            // INSERT文の作成
-            String sql = "INSERT INTO SEAT (seat_name, capacity, store_id, seat_status, created_at, updated_at) "
-                       + "VALUES (?, ?, ?, '空席', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
-            pstmt = conn.prepareStatement(sql);
-
-            // パラメータを設定
-            pstmt.setString(1, seatName);
-            pstmt.setInt(2, capacity);
-            pstmt.setInt(3, storeId);
-
-            // 実行
-            int rowsInserted = pstmt.executeUpdate();
+            int rowsInserted = DatabaseUtility.insert("SEAT", seatData);
 
             if (rowsInserted > 0) {
                 out.println("<p>座席情報が正常に登録されました！</p>");
@@ -78,17 +62,9 @@ public class InsertSeatRegistration extends HttpServlet {
                 out.println("<p>座席情報の登録に失敗しました。</p>");
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             out.println("<p>エラーが発生しました: " + e.getMessage() + "</p>");
-        } finally {
-            // リソースを解放
-            try {
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         // 共通のボタンで遷移

@@ -31,7 +31,7 @@
         </p>
 
         <!-- 支払い方法がクレジットカードの場合、クレジットカード情報を表示 -->
-        <% if ("credit-card".equals(request.getAttribute("payment_method"))) { %>
+        <% if ("クレジット".equals(request.getAttribute("payment_method"))) { %>
             <p>
                 <label for="card_number"><strong>クレジットカード番号:</strong></label>
                 <input type="text" id="card_number" name="card_number" value="${card_number}" readonly>
@@ -55,3 +55,4 @@
     </form>
 </body>
 </html>
+

@@ -43,7 +43,7 @@ public class NewStoreRegistration extends HttpServlet {
         request.setAttribute("payment_method", paymentMethod);
 
         // 支払い方法がクレジットカードの場合、追加情報もリクエストに設定
-        if ("credit-card".equals(paymentMethod)) {
+        if ("クレジット".equals(paymentMethod)) {
             request.setAttribute("card_number", cardNumber);
             request.setAttribute("card_name", cardName);
             request.setAttribute("card_expiry", cardExpiry);
@@ -52,6 +52,8 @@ public class NewStoreRegistration extends HttpServlet {
 
         // JSPページにフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("ui/store_registration_confirmation.jsp");
+
         dispatcher.forward(request, response);
     }
 }
+
