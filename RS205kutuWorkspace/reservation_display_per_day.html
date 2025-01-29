@@ -2,6 +2,8 @@
 <!-- 
 席管理画面にてクリックされた日時の予約状況を席・時間帯ごとに表示し、
 予約のある場所にカーソルを置くとその予約の情報(予約者名、人数)が表示される
+
+数直線上の文字と縦棒(のテンプレート)はモジュールを用いることで簡単に記述することができそう...
 -->
 
 <!DOCTYPE html>
@@ -20,7 +22,70 @@
                 document.getElementById('headhoot').innerHTML = data;
             }); 
         </script>
-        <div id = "timelines"> <!-- ここに各座席・日時別の予約情報が表示 --> </div>
+        <div id = "day"> <h2> の予約状況 </h2> </div>
+        <!-- idであるnumberline_templeteを利用してJavaScript側で処理を行う -->
+        <div id = "numberline_templete">
+            <h3> 座席
+                <!-- 数直線 -->
+                <div id = "number_line">
+                    <!-- 数直線上の文字 -->
+                    <div class="label" style="left: 0px;">0</div>
+                    <!-- 数直線の縦線 -->
+                    <div class="tick" style="left: 0px;"></div>
+                    <div class="label" style="left: 25px;">1</div>
+                    <div class="tick" style="left: 25px;"></div>
+                    <div class="label" style="left: 50px;">2</div>
+                    <div class="tick" style="left: 50px;"></div>
+                    <div class="label" style="left: 75px;">3</div>
+                    <div class="tick" style="left: 75px;"></div>
+                    <div class="label" style="left: 100px;">4</div>
+                    <div class="tick" style="left: 100px;"></div>
+                    <div class="label" style="left: 125px;">5</div>
+                    <div class="tick" style="left: 125px;"></div>
+                    <div class="label" style="left: 150px;">6</div>
+                    <div class="tick" style="left: 150px;"></div>
+                    <div class="label" style="left: 175px;">7</div>
+                    <div class="tick" style="left: 175px;"></div>
+                    <div class="label" style="left: 200px;">8</div>
+                    <div class="tick" style="left: 200px;"></div>
+                    <div class="label" style="left: 225px;">9</div>
+                    <div class="tick" style="left: 225px;"></div>
+                    <div class="label" style="left: 250px;">10</div>
+                    <div class="tick" style="left: 250px;"></div>
+                    <div class="label" style="left: 275px;">11</div>
+                    <div class="tick" style="left: 275px;"></div>
+                    <div class="label" style="left: 300px;">12</div>
+                    <div class="tick" style="left: 300px;"></div>
+                    <div class="label" style="left: 325px;">13</div>
+                    <div class="tick" style="left: 325px;"></div>
+                    <div class="label" style="left: 350px;">14</div>
+                    <div class="tick" style="left: 350px;"></div>
+                    <div class="label" style="left: 375px;">15</div>
+                    <div class="tick" style="left: 375px;"></div>
+                    <div class="label" style="left: 400px;">16</div>
+                    <div class="tick" style="left: 400px;"></div>
+                    <div class="label" style="left: 425px;">17</div>
+                    <div class="tick" style="left: 425px;"></div>
+                    <div class="label" style="left: 450px;">18</div>
+                    <div class="tick" style="left: 450px;"></div>
+                    <div class="label" style="left: 475px;">19</div>
+                    <div class="tick" style="left: 475px;"></div>
+                    <div class="label" style="left: 500px;">20</div>
+                    <div class="tick" style="left: 500px;"></div>
+                    <div class="label" style="left: 525px;">21</div>
+                    <div class="tick" style="left: 525px;"></div>
+                    <div class="label" style="left: 550px;">22</div>
+                    <div class="tick" style="left: 550px;"></div>
+                    <div class="label" style="left: 575px;">23</div>
+                    <div class="tick" style="left: 575px;"></div>
+                    <div class="label" style="left: 600px;">24</div>
+                    <div class="tick" style="left: 600px;"></div>
+
+                    <div class="point" style="left: 300px;"></div>
+                </div>
+            </h3>
+                
+        </div>
         <br>
         <a id = "submit" href = "stab_UI.html"> 戻る </a>
     </body>

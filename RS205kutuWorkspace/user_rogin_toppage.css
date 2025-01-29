@@ -1,0 +1,27 @@
+#information{
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    background-color: rgb(192,192,192); /* 四角形の色 */
+    border-radius: 10px; /* 角を丸くする */
+    color: black; /* テキスト色を黒に設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+    padding: 14px 16px; /* リンク内部の余白を設定 */
+    text-decoration: none; /* 下線を削除 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+.name{
+    left: 240px; /* 右端に配置 */
+    top: 240px; /* 上端に配置 */
+}
+
+.times{
+    left: 472.5px; /* 右端に配置 */
+    top: 240px; /* 上端に配置 */
+}
+
+.stars{
+    left: 705px; /* 右端に配置 */
+    top: 240px; /* 上端に配置 */
+}

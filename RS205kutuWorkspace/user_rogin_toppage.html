@@ -1,6 +1,8 @@
-<!-- 一般ユーザログイン時トップページ 作成者:佐々木 修正日時1/1 -->
+<!-- 一般ユーザログイン時トップページ 作成者:佐々木 修正日時1/29 -->
 <!-- 
 空席のある飲食店をそのユーザの予約履歴・ランダムを使用して表示する
+
+空席情報はどのテーブルから持ってくるの?
 -->
 
 <!DOCTYPE html>
@@ -8,20 +10,30 @@
     <head>
         <title> 一般ユーザログイン時トップページ </title>
         <meta charset="UTF-8">
-        <link rel = "stylesheet" href = "">
+        <link rel = "stylesheet" href = "./user_rogin_toppage.css">
     </head>
     <body>
         <div id="headhoot"> </div>
         <script>
-            fetch('kukomin/user_head_hoot.html')
+            fetch('user_head_hoot.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('headhoot').innerHTML = data;
             }); 
         </script>
         <h2> 空席のある飲食店 </h2>
-        <div id = "stores">
-            <!-- ここに予約したことがある飲食店・ランダムな飲食店の内空席のあるものの一覧が表示される -->
+        <!-- idであるstores_templeteを利用してJavaScript側で処理を行う -->
+        <div id = "stores_templete">
+            <span id = "information" class = "name"> <!-- ここに飲食店名を挿入 --> </span>
+            <span id = "information" class = "times"> <!-- ここに営業時間を挿入 --> </span>
+            <span id = "information" class = "stars">
+                <!-- モジュールにより、店舗の評価で★が黄色くなる -->
+                <big data-value = "1">★</big>
+                <big data-value = "2">★</big>
+                <big data-value = "3">★</big>
+                <big data-value = "4">★</big>
+                <big data-value = "5">★</big>
+            </span>
         </div>
     </body>
 </html>

@@ -1,0 +1,145 @@
+/* style.css */
+@charset "UTF-8";
+
+/* ページ全体の基本スタイル */
+body {
+    /* デフォルトフォントをArialに設定 */
+    font-family: Arial, sans-serif; 
+    /* デフォルトのマージンを削除 */
+    margin: 0; 
+    /* デフォルトのパディングを削除 */
+    padding: 0; 
+    /* 背景色を白に設定 */
+    background-color: #f4f4f9; 
+}
+
+.header {
+    background: #a9b6bd;
+    padding: 0px 9%;
+}
+
+.main {
+    /*中央ぞろえ*/
+    text-align: center;
+    /*上下に50pxのマージン、左右は自動で中央配置*/ 
+    margin: 50px auto; 
+}
+
+/* 入力欄 */
+input[type="text"] {
+  /*入力欄の幅*/
+  width: 200px; 
+  /*入力欄のパディング*/
+  padding: 10px; 
+  /*入力欄の枠線*/
+  border: 1px solid #ccc; 
+}
+
+/* ボタン */
+button {
+  /* ボタンのパディング */
+  padding: 10px 20px;
+  /* ボタンの枠線 */
+  margin: 10px;
+   /* ボタンの背景色 */
+  background-color: #29a5e2;
+  /* ボタンの文字色 */
+  color: rgb(0, 0, 0);
+  /* ボタンの枠線をなくす */
+  border: none;
+  /* マウスカーソルをポインターに変更 */
+  cursor: pointer;
+}
+
+/* ナビゲーションバー */
+nav {
+    /* 背景色を青に設定 */
+    background-color: #29a5e2; 
+    /* コンテンツのオーバーフローを防止 */
+    overflow: hidden;
+    /* フレックスボックスを使用 */
+    display: flex; 
+    /* コンテンツを中央揃えに設定 */
+    justify-content: center; 
+    /* リンク間にスペースを追加 */
+    gap: 50px; 
+    /* ナビゲーションバーの内部余白を設定 */
+    padding: 2%; 
+}
+
+nav a {
+    /* リンクをブロックレベル要素として設定 */
+    display: block; 
+    /* テキスト色を黒に設定 */
+    color: black; 
+    /* テキストを中央揃えに設定 */
+    text-align: center; 
+    /* リンク内部の余白を設定 */
+    padding: 14px 16px; 
+    /* 下線を削除 */
+    text-decoration: none; 
+    /* 背景色を白に設定 */
+    background-color: white; 
+    /* 角を丸くする */
+    border-radius: 4px; 
+}
+
+nav a:hover {
+    /* ホバー時の背景色を濃い緑に変更 */
+    background-color: #575757; 
+}
+
+/* 星評価 */
+.star-rating {
+    /* 星の大きさ */
+    font-size: 24px; 
+    /* 中央 */
+    text-align: center;
+    /* 背景色 */
+    background: #575757;
+    /* パディング */
+    padding: 10px 20px;
+  }
+  .star {
+    /* 未選択の星の色 */
+    color: #ccc; 
+    cursor: pointer;
+  }
+  .star.active {
+    /* 選択済みの星の色 */
+    color: gold; 
+  }
+/* 席割り振り画面 */
+ .assingnment{
+
+  width: 80%; 
+  /* 幅を調整 */
+  margin: 20px auto;
+   /* 中央寄せ */
+  border: 2px solid #ccc; 
+  /* 枠線 */
+ }
+
+ .item {
+  /* 枠線 */
+  border: 1px solid #ccc; 
+  padding: 10px;
+  margin-bottom: 10px;
+  }
+  .item-header {
+    /* 左右に配置 */
+    display: flex;
+    /* 中央揃え */
+    justify-content: space-between; 
+    align-items: center;
+    /* セルに枠線を設定 */
+    margin-bottom: 5px;
+    border: 4px solid #ccc; 
+  }
+ .options {
+     display: flex;
+     align-items: center;
+ }
+ .options label {
+     margin-right: 10px;
+ }
