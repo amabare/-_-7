@@ -1,4 +1,4 @@
-<!-- 一般ユーザマイページ 作成者:佐々木 修正日時12/24 -->
+<!-- 一般ユーザマイページ 作成者:佐々木 修正日時1/29 -->
 <!-- 
 会員情報確認・会員情報変更・パスワード変更・退会画面への遷移のあるボタン、登録名に加え、
 一般ユーザには予約一覧とその予約に対する予約削除確認画面への遷移のあるボタンを表示する  
@@ -22,28 +22,16 @@
             }); 
         </script>
         <h2> マイページ <span id = "user_name"> <!-- ここに一般ユーザ名を挿入 --> </span> </h2>
-        <h2> 予約一覧 </h2>
+        <span id = "reservation_string"> <h2> 予約一覧 </h2> </span>
         <!-- マイページのボタン -->
         <div class = "line_up">
-        <table cellspacing = "30">
-            <tr>
-                <td> <a href="#" id = "button"> 会員情報確認 </a> </td>
-            </tr>
-            <tr>
-                <td> <a href="#" id = "button"> 会員情報変更 </a> </td>
-            </tr>
-            <tr>
-                <td> <a href="#" id = "button"> パスワード変更 </a> </td>
-            </tr>
-            <tr>
-                <td> <a href="user_cancel_account_check.html" id = "button"> 退会 </a> </td>
-            </tr>
-        </table>
-        <div id = "reserves">
-            <!-- ここに予約一覧が表示されます -->
+            <iframe src = "./user_mypage_ope.html"> </iframe>
+            <div id = "reserves">
+                <span id = "name_time"> aaa<!-- ここに予約された店舗名、時間が表示されます --> </span>
+                <a id = "submit" href = "stab_UI.html"> 予約削除 </a>
+            </div>
         </div>
-    </div>
-    <br>
+        <br>    
         <center> <a id = "submit" href = "user_rogin_toppage.html"> トップページへ戻る </a> </center>
     </body>
 </html>

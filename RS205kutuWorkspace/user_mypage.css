@@ -1,6 +1,6 @@
-/* 一般ユーザマイページのCSS 作成者:佐々木 修正日時:1/19 */
+/* 一般ユーザマイページのCSS 作成者:佐々木 修正日時:1/29 */
 
-.line_up{
+table{
     display: flex;
     align-items: flex-start; /* 上部に揃える */
     gap: 30px; /* テーブルとiframeの間にスペースを空ける */
@@ -8,7 +8,7 @@
 }
 
 #submit{
-    margin: 0 auto; /* ブロック要素に対し中央寄せ */
+
     background-color: #29a5e2; /* 背景色の変更 */
     padding: 5px 100px; /*枠内の幅を設定 */
     border-radius: 5px; /* 角を丸くする */
@@ -25,6 +25,14 @@ h2{
     padding-right: 30px; /* 四角形との間隔 */
 }
 
+#user_name, #reserves #name_time{
+    color: black; /* テキスト色を黒に設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+    padding: 14px 16px; /* リンク内部の余白を設定 */
+    text-decoration: none; /* 下線を削除 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
 #user_name{
     position: absolute;
     right: 20px; /* 右端に配置 */
@@ -33,9 +41,32 @@ h2{
     height: 40px;
     background-color: white; /* 四角形の色 */
     border-radius: 10px; /* 角を丸くする */
+}
+
+#name_time{
+    width: 600px;
+    height: 40px;
+    background-color: rgb(192, 192, 192); /* 四角形の色 */
+}
+
+#button:hover{
+    background-color: #575757;
+}
+
+#button{
     color: black; /* テキスト色を黒に設定 */
     text-align: center; /* テキストを中央揃えに設定 */
     padding: 14px 16px; /* リンク内部の余白を設定 */
     text-decoration: none; /* 下線を削除 */
+    background-color: white; /* 背景色を白に設定 */
+    border-radius: 4px; /* 角を丸くする */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+}
+
+#reservation_string{
+    text-align: center;
+}
+
+#reserves {
+    display: flex; /* 横並びにする */
 }
