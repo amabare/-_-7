@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
+//import AmabareWorkspace.HashPassword; // HashPasswordクラスのインポート
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+
 
 @WebServlet("/insert_store_registration")
 public class InsertStoreRegistration extends HttpServlet {
@@ -23,6 +26,7 @@ public class InsertStoreRegistration extends HttpServlet {
         String storeMail = request.getParameter("store_mail");
         String storePhone = request.getParameter("store_phone");
         String paymentMethod = request.getParameter("payment_method");
+        String storePwd = request.getParameter("store_pwd");
 
         // 必要なパラメータが不足している場合のエラーチェック
         List<String> missingParams = new ArrayList<>();
@@ -41,6 +45,9 @@ public class InsertStoreRegistration extends HttpServlet {
         if (paymentMethod == null || paymentMethod.isEmpty()) {
             missingParams.add("payment_method");
         }
+        if (storePwd == null || storePwd.length() < 8 || storePwd.length() > 20) {
+            missingParams.add("store_pwd (パスワードは8文字以上20文字以下で入力してください)");
+        }
 
         if (!missingParams.isEmpty()) {
             // 不足しているパラメータを出力
@@ -53,43 +60,33 @@ public class InsertStoreRegistration extends HttpServlet {
             return;
         }
 
-        // payment_methodが有効な値であるかをチェック
-        if (!"コンビニ".equals(paymentMethod) && !"クレジット".equals(paymentMethod)) {
-            out.println("<p>無効な支払い方法が選択されました。</p>");
-            return;
-        }
+        // パスワードをハッシュ化
+        String hashedPwd = HashPassword.HashString(storePwd); // HashPasswordクラスを使用
 
-        // データベース接続と登録処理
+        // データベースに保存するデータをマップにまとめる
+        Map<String, Object> storeData = new HashMap<>();
+        storeData.put("name", storeName);
+        storeData.put("address", storeAddress);
+        storeData.put("email", storeMail);
+        storeData.put("phone_number", storePhone);
+        storeData.put("payment_method", paymentMethod);
+        storeData.put("store_pwd", hashedPwd); // ハッシュ化したパスワードを追加
+        storeData.put("created_at", new java.sql.Timestamp(System.currentTimeMillis()));
+        storeData.put("updated_at", new java.sql.Timestamp(System.currentTimeMillis()));
+
+        // DatabaseUtilityを使ってデータを挿入
         try {
-            // 重複チェックのSQLクエリ
-            String checkSql = "name = ? AND address = ?";
-            Object[] checkParams = { storeName, storeAddress };
-            List<Map<String, Object>> existingStores = DatabaseUtility.select("STORE", checkSql, checkParams);
+            int rowsInserted = DatabaseUtility.insert("STORE", storeData);
 
-            if (existingStores != null && !existingStores.isEmpty()) {
-                // すでに店舗が登録されている場合
-                out.println("<p>この店舗はすでに登録されています。</p>");
+            if (rowsInserted > 0) {
+                out.println("<p>店舗情報が正常に登録されました！</p>");
             } else {
-                // 重複がない場合、店舗情報をINSERT
-                Map<String, Object> storeData = new HashMap<>();
-                storeData.put("name", storeName);
-                storeData.put("address", storeAddress);
-                storeData.put("email", storeMail); // DBカラムに合わせる
-                storeData.put("phone_number", storePhone); // DBカラムに合わせる
-                storeData.put("payment_method", paymentMethod);
-
-                int rowsInserted = DatabaseUtility.insert("STORE", storeData);
-                if (rowsInserted > 0) {
-                    // 店舗が正常に登録された場合
-                    out.println("<p>店舗が正常に登録されました！</p>");
-                } else {
-                    out.println("<p>店舗の登録に失敗しました。</p>");
-                }
+                out.println("<p>店舗情報の登録に失敗しました。</p>");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             out.println("<p>エラーが発生しました: " + e.getMessage() + "</p>");
         }
     }
 }
-

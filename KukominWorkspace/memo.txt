@@ -10,19 +10,28 @@
 みゆうの会員登録以外のモジュールはでき
 
 
+javac -cp /opt/tomcat/lib/servlet-api.jar:. LoginServlet.java
+javac -cp "/opt/tomcat/lib/servlet-api.jar:/opt/tomcat/lib/gson-2.8.8.jar:/opt/tomcat/lib/jstl-l:." GetAvailableSeatsServlet.java
+cp LoginServlet.classes WEB-INF/classes
+mv NewStoreRegistration.class ../../WEB-INF/classes/
+mysql -h database-1.c1w61uuuqanw.us-east-1.rds.amazonaws.com -u admin -p my_database < add.sql
+mysql -h database-1.c1w61uuuqanw.us-east-1.rds.amazonaws.com -u admin -p my_database
+user:admin
+pwd:root0000
 
-sudo javac -cp /opt/tomcat/lib/servlet-api.jar:. LoginServlet.java
-sudo cp LoginServlet.classes WEB-INF/classes
+DESCRIBE STORE;
+DELETE FROM SEAT_STATUS_HISTORY WHERE seat_status_id = 2;
 
+find . -name "*.class" -type f -delete
 
 sudo javac -cp /usr/share/java/mysql-connector-j.jar DatabaseUtility.java
-sudo mysql -u root -p
-password:root00
+
 
 
 java -cp .:/usr/share/java/mysql-connector-java-9.1.0.jar DateOfViewReservation
 
 sudo systemctl restart tomcat
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root00';
 
 +-----------------------+
 | Tables_in_my_database |

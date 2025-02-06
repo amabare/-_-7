@@ -1,10 +1,3 @@
-/*
-作成者：澤村
-更新日時：2025年1月8日
-動作・役割：新規事業者登録機能
-コメント： 改善の余地あり
-*/
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,6 +21,7 @@ public class NewStoreRegistration extends HttpServlet {
         String storeMail = request.getParameter("email");
         String storePhone = request.getParameter("phone_number");
         String paymentMethod = request.getParameter("payment-method");
+        String storePwd = request.getParameter("store_pwd");
 
         // クレジットカード情報（支払方法がクレジットの場合）
         String cardNumber = request.getParameter("card-number");
@@ -41,7 +35,7 @@ public class NewStoreRegistration extends HttpServlet {
         request.setAttribute("store_mail", storeMail);
         request.setAttribute("store_phone", storePhone);
         request.setAttribute("payment_method", paymentMethod);
-
+        request.setAttribute("store_pwd", storePwd);
         // 支払い方法がクレジットカードの場合、追加情報もリクエストに設定
         if ("クレジット".equals(paymentMethod)) {
             request.setAttribute("card_number", cardNumber);

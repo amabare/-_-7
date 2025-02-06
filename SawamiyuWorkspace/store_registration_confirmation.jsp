@@ -26,6 +26,10 @@
             <input type="tel" id="store_phone" name="store_phone" value="${store_phone}" readonly>
         </p>
         <p>
+            <label for="store_pwd"><strong>パスワード:</strong></label>
+            <input type="text" id="store_pwd" name="store_pwd" value="${store_pwd}" readonly>
+        </p>
+        <p>
             <label for="payment_method"><strong>支払い方法:</strong></label>
             <input type="text" id="payment_method" name="payment_method" value="${payment_method}" readonly>
         </p>
